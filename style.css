@@ -1,0 +1,58 @@
+body {
+	margin: 0 auto;
+	height: 100vh;
+	width: 100vw;
+	background-color: black;
+	color: whitesmoke;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+#app {
+	margin: auto;
+	text-align: center;
+	max-width: 70vw;
+	min-width: 540px;
+	word-wrap: break-word;
+}
+
+#wallet {
+	text-align: center;
+
+	margin: auto;
+	width: 70%;
+}
+
+#message {
+	text-align: center;
+	margin: auto;
+}
+
+#clearStorage {
+	margin: auto;
+	width: 100%;
+	text-align: center;
+}
+
+#clearBtn {
+	border: 3px solid #077cc0;
+	width: auto;
+	margin: auto;
+}
+
+#mem {
+	border: solid yellow 1px;
+}
+
+#memDecrypt {
+	border: solid blueviolet 1px;
+}
+
+#subscribe {
+	border: solid blue 2px;
+	margin: auto;
+	width: 50%;
+}

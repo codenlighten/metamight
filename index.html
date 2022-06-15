@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
+
+		<script
+			type="text/javascript"
+			src="https://unpkg.com/bsv@1.5.0/bsv.min.js"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+			integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script src="https://cdn.jsdelivr.net/gh/centrifugal/centrifuge-js@2.X.X/dist/centrifuge.min.js"></script>
+
+		<script src="https://unpkg.com/run-sdk"></script>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+		<title>MetaMeet</title>
+	</head>
+	<body>
+		<!-- <div id="fileupload">
+			<input type="file" id="file" />
+			<button onclick="submitFile()" id="submit">Submit</button>
+		</div> -->
+		<div id="app">
+			<div id="header">
+				<h1>MetaMeet</h1>
+			</div>
+			<br />
+			<div id="wallet">
+				<h3 id="address"></h3>
+				<h3 id="confirmed"></h3>
+				<h3 id="unconfirmed"></h3>
+			</div>
+			<div id="encrypt">
+				<label for="">Enter Encryption/Decryption Key</label> <br />
+				<input
+					placeholder="optional: encryption key"
+					type="password"
+					id="password"
+				/>
+			</div>
+			<br />
+			<div id="message">
+				<label>Enter Your Message</label><br />
+				<textarea type="text" id="myMessage" cols="30" rows="10"></textarea>
+				<br />
+				<button id="messageSubmit" onclick="messageSubmit()">Submit</button>
+			</div>
+			<div id="results">
+				<h2 id="result"></h2>
+			</div>
+			<br />
+			<!-- <div id="subscribe">
+        <label for="">Enter Decryption Key</label>
+				<input
+					id="subscription"
+					type="password"
+					placeholder="Subscribe to Conversation?"
+				/><br />
+				<button onclick="subscribe()">Subscribe</button>
+			</div> -->
+			<div id="mem"></div>
+			<div id="memDecrypt"></div>
+			<div id="transactions">
+				<ul id="txList"></ul>
+			</div>
+			<br /><br /><br />
+			<div id="clearStorage">
+				<button id="clearBtn" onclick="clearStorage()">Clear Keys</button>
+			</div>
+		</div>
+
+		<script src="./app.js"></script>
+		<script src="./pub.js"></script>
+		<script src="./crypt.js"></script>
+		<script src="./mem.js"></script>
+	</body>
+</html>
