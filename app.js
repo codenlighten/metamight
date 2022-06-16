@@ -53,16 +53,16 @@ const getBalance = async (address) => {
 	}
 	document.getElementById(
 		"address"
-	).innerHTML = `Asset Address:<br/> <a href="bitcoin:${address}">${address}</a>`;
-	// document.getElementById(
-	// 	"confirmed"
-	// ).innerHTML = `Confirmed: ${res.confirmed} TXS`;
-	// document.getElementById(
-	// 	"unconfirmed"
-	// ).innerHTML = `Unconfirmed: ${res.unconfirmed} TXS`;
+	).innerHTML = `<a href="bitcoin:${address}">${address}</a>`;
+	document.getElementById(
+		"confirmed"
+	).innerHTML = `Confirmed: ${res.confirmed} TXS`;
+	document.getElementById(
+		"unconfirmed"
+	).innerHTML = `Unconfirmed: ${res.unconfirmed} TXS`;
 };
 
-// getBalance(address);
+getBalance(address);
 
 const getBalance2 = async (address2) => {
 	let response = await fetch(
@@ -82,7 +82,7 @@ const getBalance2 = async (address2) => {
 		"unconfirmed2"
 	).innerHTML = `Unconfirmed: ${res.unconfirmed} Sats`;
 };
-getBalance2(address2);
+// getBalance2(address2);
 
 const messageSubmit = async () => {
 	let encryption = "";
