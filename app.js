@@ -51,7 +51,7 @@ const getBalance = async (address) => {
 
 	setInterval(() => {
 		getBalance(address);
-	}, 15000);
+	}, 45000);
 };
 // if (!localStorage.purse) {
 // 	document.getElementById("loginTitle").innerHTML = "Register";
