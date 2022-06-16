@@ -40,7 +40,7 @@ const getMem = () => {
 				fieldArray.map((e) => {
 					document.getElementById(
 						"mem"
-					).innerHTML = `AppID: ${f1}<br/>UserID:  ${f2}<br/>Message:   ${f3}<br/>   ${f4}`;
+					).innerHTML = `AppID: ${f1}<br/>UserID:  ${f2}<br/><h2>Message:   ${f3}</h2><br/>   ${f4}`;
 				});
 			}
 			if (
