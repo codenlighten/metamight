@@ -26,6 +26,12 @@ body {
 	width: 70%;
 }
 
+#wallet2 {
+	text-align: center;
+
+	margin: auto;
+	width: 70%;
+}
 #message {
 	text-align: center;
 	margin: auto;

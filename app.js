@@ -1,4 +1,5 @@
 var address;
+var address2;
 var transactions = [];
 const findTransactions = (transaction) => {
 	if (transactions.length > 0) {
@@ -25,9 +26,18 @@ if (!localStorage.address) {
 	console.log(address, privKey);
 	localStorage.address = address;
 	localStorage.myKey = privKey;
+
+	let privateKey2 = bsv.PrivateKey.fromRandom();
+	let privKey2 = privateKey2.toWIF();
+	address2 = bsv.Address.fromPrivateKey(privateKey2).toString();
+	console.log(address2, privKey2);
+	localStorage.address2 = address2;
+	localStorage.myKey2 = privKey2;
 } else {
 	address = localStorage.address;
 	let privKey = localStorage.myKey;
+	address2 = localStorage.address2;
+	let privKey2 = localStorage.myKey2;
 }
 
 const getBalance = async (address) => {
@@ -35,46 +45,46 @@ const getBalance = async (address) => {
 		`https://api.whatsonchain.com/v1/bsv/main/address/${address}/balance`
 	);
 	let res = await response.json();
-	// console.log(res);
+	console.log(res);
 	confirmed = res.confirmed;
 	unconfirmed = res.unconfirmed;
 	document.getElementById(
-		"address"
+		"Asset Wallet"
 	).innerHTML = `<a href="bitcoin:${address}">${address}</a>`;
 	document.getElementById(
 		"confirmed"
-	).innerHTML = `Confirmed: ${res.confirmed} Sats`;
+	).innerHTML = `Confirmed: ${res.confirmed} TXS`;
 	document.getElementById(
 		"unconfirmed"
-	).innerHTML = `Unconfirmed: ${res.unconfirmed} Sats`;
-	// console.log(res);
-
-	// setInterval(() => {
-	// 	getBalance(address);
-	// }, 45000);
+	).innerHTML = `Unconfirmed: ${res.unconfirmed} TXS`;
 };
-// if (!localStorage.purse) {
-// 	document.getElementById("loginTitle").innerHTML = "Register";
-// }
-// if (!localStorage.loggedIn) {
-// 	document.getElementById("app").style.display = "none";
-// 	document.getElementById("login").style.display = "";
-// }
+
 getBalance(address);
-// let purse = process.env.PURSE_WIF2;
-// let privateKey = bsv.PrivateKey.fromRandom();
-// let address2 = bsv.Address.fromPrivateKey(privateKey).toString();
-// console.log(address2);
+
+const getBalance2 = async (address2) => {
+	let response = await fetch(
+		`https://api.whatsonchain.com/v1/bsv/main/address/${address2}/balance`
+	);
+	let res = await response.json();
+	console.log(res);
+	confirmed = res.confirmed;
+	unconfirmed = res.unconfirmed;
+	document.getElementById(
+		"address2"
+	).innerHTML = `Purse Address: <a href="bitcoin:${address2}">${address2}</a>`;
+	document.getElementById(
+		"confirmed2"
+	).innerHTML = `Confirmed: ${res.confirmed} Sats`;
+	document.getElementById(
+		"unconfirmed2"
+	).innerHTML = `Unconfirmed: ${res.unconfirmed} Sats`;
+};
+getBalance2(address2);
+
 const messageSubmit = async () => {
-	// let checkbox = document.getElementById("checkbox").value;
-	// console.log(checkbox);
 	let encryption = "";
-	// let address = localStorage.address;
 	let message = document.getElementById("myMessage").value;
 	let password = document.getElementById("password").value;
-	// console.log(message, address, password);
-	// if (password.value) {
-	// 	// let password = document.getElementById("password").value;
 
 	localStorage.decryption = password;
 	if (password) {
