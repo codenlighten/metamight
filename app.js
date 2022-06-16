@@ -62,7 +62,7 @@ const getBalance = async (address) => {
 	// ).innerHTML = `Unconfirmed: ${res.unconfirmed} TXS`;
 };
 
-getBalance(address);
+// getBalance(address);
 
 const getBalance2 = async (address2) => {
 	let response = await fetch(
