@@ -49,9 +49,9 @@ const getBalance = async (address) => {
 	).innerHTML = `Unconfirmed: ${res.unconfirmed} Sats`;
 	// console.log(res);
 
-	setInterval(() => {
-		getBalance(address);
-	}, 45000);
+	// setInterval(() => {
+	// 	getBalance(address);
+	// }, 45000);
 };
 // if (!localStorage.purse) {
 // 	document.getElementById("loginTitle").innerHTML = "Register";
