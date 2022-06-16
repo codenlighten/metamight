@@ -48,6 +48,9 @@ const getBalance = async (address) => {
 	console.log(res);
 	confirmed = res.confirmed;
 	unconfirmed = res.unconfirmed;
+	if (confirmed > 0 || unconfirmed || 0) {
+		alert("new message");
+	}
 	document.getElementById(
 		"address"
 	).innerHTML = `Asset Address:<br/> <a href="bitcoin:${address}">${address}</a>`;
