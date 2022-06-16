@@ -49,14 +49,14 @@ const getBalance = async (address) => {
 	confirmed = res.confirmed;
 	unconfirmed = res.unconfirmed;
 	document.getElementById(
-		"Asset Wallet"
-	).innerHTML = `<a href="bitcoin:${address}">${address}</a>`;
-	document.getElementById(
-		"confirmed"
-	).innerHTML = `Confirmed: ${res.confirmed} TXS`;
-	document.getElementById(
-		"unconfirmed"
-	).innerHTML = `Unconfirmed: ${res.unconfirmed} TXS`;
+		"address"
+	).innerHTML = `Asset Address:<br/> <a href="bitcoin:${address}">${address}</a>`;
+	// document.getElementById(
+	// 	"confirmed"
+	// ).innerHTML = `Confirmed: ${res.confirmed} TXS`;
+	// document.getElementById(
+	// 	"unconfirmed"
+	// ).innerHTML = `Unconfirmed: ${res.unconfirmed} TXS`;
 };
 
 getBalance(address);
