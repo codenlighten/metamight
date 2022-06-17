@@ -13,6 +13,7 @@ body {
 
 #app {
 	margin: auto;
+	height: 100%;
 	text-align: center;
 	max-width: 70vw;
 	min-width: none;
