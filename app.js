@@ -48,25 +48,23 @@ const getBalance = async (address) => {
 	console.log(res);
 	confirmed = res.confirmed;
 	unconfirmed = res.unconfirmed;
-	if (confirmed > 0 || unconfirmed || 0) {
-		alert("new message");
-	}
+
 	document.getElementById(
 		"address"
 	).innerHTML = `<a href="bitcoin:${address}">${address}</a>`;
 	document.getElementById(
 		"confirmed"
-	).innerHTML = `Confirmed: ${res.confirmed} TXS`;
+	).innerHTML = `Confirmed: ${res.confirmed} SATS`;
 	document.getElementById(
 		"unconfirmed"
-	).innerHTML = `Unconfirmed: ${res.unconfirmed} TXS`;
+	).innerHTML = `Unconfirmed: ${res.unconfirmed} SATS`;
 };
 
 getBalance(address);
 
 const getBalance2 = async (address2) => {
 	let response = await fetch(
-		`https://api.whatsonchain.com/v1/bsv/main/address/${address2}/balance`
+		`https://api.whatsonchain.com/v1/bsv/main/address/${addressz}/balance`
 	);
 	let res = await response.json();
 	console.log(res);
