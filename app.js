@@ -80,7 +80,7 @@ const getBalance2 = async (address2) => {
 		"unconfirmed2"
 	).innerHTML = `Unconfirmed: ${res.unconfirmed} Sats`;
 };
-getBalance2(address2);
+// getBalance2(address2);
 
 const messageSubmit = async () => {
 	let encryption = "";
