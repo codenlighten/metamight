@@ -64,7 +64,7 @@ getBalance(address);
 
 const getBalance2 = async (address2) => {
 	let response = await fetch(
-		`https://api.whatsonchain.com/v1/bsv/main/address/${addressz}/balance`
+		`https://api.whatsonchain.com/v1/bsv/main/address/${address2}/balance`
 	);
 	let res = await response.json();
 	console.log(res);
@@ -72,7 +72,7 @@ const getBalance2 = async (address2) => {
 	unconfirmed = res.unconfirmed;
 	document.getElementById(
 		"address2"
-	).innerHTML = `Purse Address: <a href="bitcoin:${address2}">${address2}</a>`;
+	).innerHTML = `NFTY Address: <a href="bitcoin:${address2}">${address2}</a>`;
 	document.getElementById(
 		"confirmed2"
 	).innerHTML = `Confirmed: ${res.confirmed} Sats`;
@@ -80,7 +80,7 @@ const getBalance2 = async (address2) => {
 		"unconfirmed2"
 	).innerHTML = `Unconfirmed: ${res.unconfirmed} Sats`;
 };
-// getBalance2(address2);
+getBalance2(address2);
 
 const messageSubmit = async () => {
 	let encryption = "";

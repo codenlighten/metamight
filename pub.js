@@ -136,7 +136,8 @@ const pub2 = async (message, encryption) => {
 	console.log(encryption);
 	// Send change to the same key.
 	tx.change(inputAddress);
-
+	let fees = tx.estimatefees();
+	console.log(fees);
 	const myTxOutput = new bsv.Transaction.Output({
 		satoshis: 0,
 		script: bsv.Script.buildSafeDataOut([
