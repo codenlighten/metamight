@@ -140,6 +140,14 @@ const submitFile = async () => {
 		// }
 		let publish = pubFile(myResult, mime);
 		console.log(publish);
+		document.getElementById(
+				"result"
+			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${pub}">${pub}</a>`;
+			transactions.push(pub);
+			findTransactions(pub);
+			let txresult = await fetch(
+				`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub}`
+			);
 	};
 
 	reader.onerror = function () {
