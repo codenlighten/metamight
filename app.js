@@ -126,7 +126,7 @@ const submitFile = async () => {
 
 	reader.readAsDataURL(myFile);
 
-	reader.onload = function async() {
+	reader.onload = function () {
 		myResult = reader.result;
 		myResult = myResult.split(",").pop();
 		console.log(myResult);
@@ -138,16 +138,12 @@ const submitFile = async () => {
 		// 	myResult = myResultEncrypted;
 		// 	encryption = "19ZdVjNeiqcUvSu32nJ3oTKyNmfqwZsnef";
 		// }
-		let publish = pubFile(myResult, mime);
-		console.log(publish);
-		document.getElementById(
+		let publish = pubFile(myResult, mime).then((res) => {
+			document.getElementById(
 				"result"
-			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${pub}">${pub}</a>`;
-			transactions.push(pub);
-			findTransactions(pub);
-			let txresult = await fetch(
-				`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub}`
-			);
+			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${res}">${res}</a>`;
+			console.log(res);
+		});
 	};
 
 	reader.onerror = function () {
