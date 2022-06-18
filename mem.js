@@ -6,6 +6,7 @@ let subscribe = () => {
 };
 
 const hexConvert = (str1) => {
+	console.log(str1);
 	var hex = str1.toString();
 	var str = "";
 	for (var n = 0; n < hex.length; n += 2) {
@@ -29,12 +30,13 @@ const getMem = () => {
 					"3137457578424e466751764e394d64514b664a444447636171637239735457637a74"
 				)
 			) {
-				console.log(["message alert"]);
 				let asmArray = asm.split(" ");
 				asmArray.splice(0, 2);
-				let f1 = hexConvert(asmArray[0]);
-				let f2 = hexConvert(asmArray[1]);
-				let f3 = hexConvert(asmArray[2]);
+				console.log(asmArray);
+
+				let f1 = asmArray[0] != undefined ? hexConvert(asmArray[0]) : "";
+				let f2 = asmArray[1] != undefined ? hexConvert(asmArray[1]) : "";
+				let f3 = asmArray[2] != undefined ? hexConvert(asmArray[2]) : "";
 				let f4 = asmArray[3] != undefined ? hexConvert(asmArray[3]) : "";
 				let fieldArray = [f1, f2, f3, f4];
 				fieldArray.map((e) => {

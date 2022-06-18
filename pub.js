@@ -135,15 +135,73 @@ const pub2 = async (message, encryption) => {
 	}
 	console.log(encryption);
 	// Send change to the same key.
+	let btoaArray = [
+		btoa("17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt"),
+		btoa(address),
+		btoa(message),
+		btoa(encryption ? encryption : ""),
+	];
+	console.log(btoaArray);
 	tx.change(inputAddress);
 	const myTxOutput = new bsv.Transaction.Output({
 		satoshis: 0,
-		script: bsv.Script.buildSafeDataOut([
-			"17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt",
-			address,
-			message,
-			encryption ? encryption : "",
-		]),
+		script: bsv.Script.buildSafeDataOut(btoaArray, "base64"),
+	});
+
+	tx.addOutput(myTxOutput);
+
+	tx.sign([privKey]);
+
+	// Broadcast
+	try {
+		await broadcast(tx);
+	} catch (e) {
+		// logger.fatal(`Error: ${e.message}`);
+		// process.exit(1);
+		console.log(e.message);
+	}
+	console.log(tx.hash);
+
+	return tx.hash;
+};
+
+const pubFile = async (message, mime, encryption) => {
+	console.log("pubtest", message, address);
+	const privKey = bsv.PrivateKey.fromWIF(localStorage.myKey);
+	// console.log(privKey);
+
+	const inputAddress = bsv.Address.fromPrivateKey(privKey);
+	const tx = new bsv.Transaction();
+	tx.feePerKb(50);
+
+	// Build tx consumming utxos for current key
+	const utxos = await run.blockchain.utxos(inputAddress.toString());
+
+	for (const utxo of utxos) {
+		tx.from({
+			txid: utxo.txid,
+			vout: utxo.vout,
+			script: bsv.Script.fromHex(utxo.script),
+			satoshis: utxo.satoshis,
+		});
+	}
+	console.log(encryption);
+	// Send change to the same key.  17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt
+	let btoaArray = [
+		btoa("19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut"),
+		message,
+		btoa(mime),
+		btoa("binary"),
+		btoa(address),
+		btoa("17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt"),
+
+		btoa(encryption ? encryption : ""),
+	];
+	console.log(btoaArray);
+	tx.change(inputAddress);
+	const myTxOutput = new bsv.Transaction.Output({
+		satoshis: 0,
+		script: bsv.Script.buildSafeDataOut(btoaArray, "base64"),
 	});
 
 	tx.addOutput(myTxOutput);

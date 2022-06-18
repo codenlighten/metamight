@@ -1,6 +1,7 @@
 var address;
 var address2;
 var transactions = [];
+var myResult;
 const findTransactions = (transaction) => {
 	if (transactions.length > 0) {
 		transactions.push(transaction);
@@ -86,94 +87,59 @@ const messageSubmit = async () => {
 	let encryption = "";
 	let message = document.getElementById("myMessage").value;
 	let password = document.getElementById("password").value;
+	// let fileCheck = () => {
 
+	// }
 	localStorage.decryption = password;
 	if (password) {
 		message = encrypt(password, message);
 		encryption = "19ZdVjNeiqcUvSu32nJ3oTKyNmfqwZsnef";
 		// console.log(decrypted);
 		// console.log(message, address, password);
+		try {
+			console.log(message, encryption);
+			let pub = await pub2(message, encryption);
+			console.log(pub);
+			document.getElementById(
+				"result"
+			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${pub}">${pub}</a>`;
+			transactions.push(pub);
+			findTransactions(pub);
+			let txresult = await fetch(
+				`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub}`
+			);
+			console.log(txresult);
+			document.getElementById("myMessage").innerHTML = "";
+			document.getElementById("password").innerHTML = "";
+		} catch (e) {
+			console.log(e);
+		}
 	}
-
-	try {
-		let pub = await pub2(message, encryption);
-		console.log(pub);
-		document.getElementById(
-			"result"
-		).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${pub}">${pub}</a>`;
-		transactions.push(pub);
-		findTransactions(pub);
-		let txresult = await fetch(
-			`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub}`
-		);
-		console.log(txresult);
-		document.getElementById("myMessage").innerHTML = "";
-		document.getElementById("password").innerHTML = "";
-	} catch (e) {
-		console.log(e);
-	}
-
-	// }
 };
 
 const submitFile = async () => {
 	let file = document.getElementById("file");
 	let myFile = await file.files[0];
 	let reader = new FileReader();
-	const fileByteArray = [];
+	// const fileByteArray = [];
+	localStorage.decryption = password;
 
-	reader.readAsArrayBuffer(myFile);
-	// reader.readAsDataURL(myFile);
+	reader.readAsDataURL(myFile);
 
-	reader.onload = function (e) {
-		console.log(e);
-		// if (e.target.readyState === FileReader.DONE) {
-		// 	const arrayBuffer = e.target.result,
-		// 		array = new Uint8Array(arrayBuffer);
-		// 	for (const a of array) {
-		// 		fileByteArray.push(a);
-		// 	}
-		// }
-		// console.log(reader);
-		// let sha = sha256(fileByteArray);
-		// console.log(sha);
-		let result = reader.result;
-		console.log(result);
-		// let fileEncrypt = encrypt("password", fileByteArray);
-		// console.log(fileEncrypt.length);
-		// console.log(fileByteArray.length);
+	reader.onload = function async() {
+		myResult = reader.result;
+		myResult = myResult.split(",").pop();
+		console.log(myResult);
+
 		let mime = myFile.type;
-		console.log(mime);
-		// pub(fileEncrypt);
-		pub2(result, mime);
-		// let formData = new FormData();
-		// formData.append("userName", "userName");
-		// formData.append("file", myFile);
-		// formData.append("fileArray", fileByteArray);
-		// formData.append("fileEncrypt", fileEncrypt);
-		// formData.append("sha", sha);
-		// axios({
-		// 	method: "post",
-		// 	url: "/pub",
-		// 	data: formData,
-		// 	headers: { "Content-Type": "multipart/form-data" },
-		// })
-		// 	.then(function (response) {
-		// 		let data = response.data;
-		// 		console.log(data);
-		// 		// let decryptedFile = decrypt("password", data);
-		// 		// console.log(decryptedFile);
-		// 		// let dataURI = decryptedFile.buf.toString("base64");
-		// 		// let newBase64 = arrayToBase64(decryptedFile);
-		// 		// console.log(newBase64);
-		// 		// console.log(dataURI);
-		// 		// let url = `data:${metaResponse.mime};base64,${data}`;
-		// 		//     const myBlob = await res.blob();//from binary?
-		// 		// const res = await blobToDataURL(myBlob);
-		// 	})
-		// 	.catch(function (error) {
-		// 		console.log(error);
-		// 	});
+		console.log(myResult);
+		// if (password) {
+		// 	let myResultEncrypted = encrypt(password, myResult);
+		// 	myResult = myResultEncrypted;
+		// 	encryption = "19ZdVjNeiqcUvSu32nJ3oTKyNmfqwZsnef";
+		// }
+		let publish = pubFile(myResult, mime);
+		console.log(publish);
 	};
 
 	reader.onerror = function () {
