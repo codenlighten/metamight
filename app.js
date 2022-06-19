@@ -86,6 +86,9 @@ const getBalance2 = async (address2) => {
 const messageSubmit = async () => {
 	let encryption = "";
 	let message = document.getElementById("myMessage").value;
+	if (!message) {
+		return;
+	}
 	let password = document.getElementById("password").value;
 	// let fileCheck = () => {
 
@@ -109,8 +112,8 @@ const messageSubmit = async () => {
 				`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub}`
 			);
 			console.log(txresult);
-			document.getElementById("myMessage").innerHTML = "";
-			document.getElementById("password").innerHTML = "";
+			document.getElementById("myMessage").value = "";
+			document.getElementById("password").value = "";
 		} catch (e) {
 			console.log(e);
 		}
@@ -120,6 +123,10 @@ const messageSubmit = async () => {
 const submitFile = async () => {
 	let file = document.getElementById("file");
 	let myFile = await file.files[0];
+	if (!myFile) {
+		return;
+	}
+
 	let reader = new FileReader();
 	// const fileByteArray = [];
 	localStorage.decryption = password;
@@ -128,17 +135,26 @@ const submitFile = async () => {
 
 	reader.onload = function () {
 		myResult = reader.result;
+
 		myResult = myResult.split(",").pop();
-		console.log(myResult);
+		let size = myResult.length;
+		let sizeMB = size / 1048576;
+		console.log(size, myResult);
+
+		if (sizeMB >= 5) {
+			alert("jonah big file yeah baby");
+			console.log("length", myResult.length);
+		}
+		// console.log(myResult);
 
 		let mime = myFile.type;
-		console.log(myResult);
+		// console.log(myResult);
 		// if (password) {
 		// 	let myResultEncrypted = encrypt(password, myResult);
 		// 	myResult = myResultEncrypted;
 		// 	encryption = "19ZdVjNeiqcUvSu32nJ3oTKyNmfqwZsnef";
 		// }
-		let publish = pubFile(myResult, mime).then((res) => {
+		pubFile(myResult, mime).then((res) => {
 			document.getElementById(
 				"result"
 			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${res}">${res}</a>`;
