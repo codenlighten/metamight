@@ -133,7 +133,6 @@ const pub2 = async (message, encryption) => {
 			satoshis: utxo.satoshis,
 		});
 	}
-	console.log(encryption);
 	// Send change to the same key.
 	let btoaArray = [
 		btoa("17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt"),

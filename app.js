@@ -2,6 +2,8 @@ var address;
 var address2;
 var transactions = [];
 var myResult;
+
+var fileArray = [];
 const findTransactions = (transaction) => {
 	if (transactions.length > 0) {
 		transactions.push(transaction);
@@ -129,7 +131,7 @@ const submitFile = async () => {
 
 	let reader = new FileReader();
 	// const fileByteArray = [];
-	localStorage.decryption = password;
+	// localStorage.decryption = password;
 
 	reader.readAsDataURL(myFile);
 
@@ -137,13 +139,20 @@ const submitFile = async () => {
 		myResult = reader.result;
 
 		myResult = myResult.split(",").pop();
+		// myResult = encrypt("jonah", myResult);
 		let size = myResult.length;
 		let sizeMB = size / 1048576;
 		console.log(size, myResult);
 
 		if (sizeMB >= 5) {
-			alert("jonah big file yeah baby");
-			console.log("length", myResult.length);
+			let chunkArray = fileSplit(myResult);
+			chunkArray.map(async (e) => {
+				let chunk = await pubFile(e);
+				fileArray.push(chunk);
+				console.log(e);
+			});
+			console.log(fileArray);
+			return;
 		}
 		// console.log(myResult);
 
@@ -209,4 +218,15 @@ const clearStorage = () => {
 		localStorage.clear();
 		location.reload();
 	}
+};
+
+const fileSplit = (arr) => {
+	var chunks = [],
+		i = 0,
+		n = arr.length;
+	while (i < n) {
+		chunks.push(arr.slice(i, (i += 5000000)));
+	}
+	console.log(chunks);
+	return chunks;
 };
