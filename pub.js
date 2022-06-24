@@ -171,7 +171,7 @@ const pubFile = async (message, mime, encryption) => {
 
 	const inputAddress = bsv.Address.fromPrivateKey(privKey);
 	const tx = new bsv.Transaction();
-	tx.feePerKb(50);
+	tx.feePerKb(10);
 
 	// Build tx consumming utxos for current key
 	const utxos = await run.blockchain.utxos(inputAddress.toString());
