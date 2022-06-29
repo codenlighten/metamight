@@ -91,14 +91,14 @@ const messageSubmit = async () => {
 	if (!message) {
 		return;
 	}
-	let password = document.getElementById("password").value;
+	let password = document.getElementById("password");
 	// let fileCheck = () => {
 
 	// }
 
-	if (password) {
-		localStorage.decryption = password;
-		message = encrypt(password, message);
+	if (password.value) {
+		localStorage.decryption = password.value;
+		message = encrypt(password.value, message);
 		encryption = "19ZdVjNeiqcUvSu32nJ3oTKyNmfqwZsnef";
 		// console.log(decrypted);
 		// console.log(message, address, password);
@@ -122,7 +122,7 @@ const messageSubmit = async () => {
 		}
 	} else {
 		try {
-			let pub = await pub2(message, encryption);
+			let pub = await pub2(message);
 			console.log(pub);
 			document.getElementById(
 				"result"
