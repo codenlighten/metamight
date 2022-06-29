@@ -95,14 +95,33 @@ const messageSubmit = async () => {
 	// let fileCheck = () => {
 
 	// }
-	localStorage.decryption = password;
+
 	if (password) {
+		localStorage.decryption = password;
 		message = encrypt(password, message);
 		encryption = "19ZdVjNeiqcUvSu32nJ3oTKyNmfqwZsnef";
 		// console.log(decrypted);
 		// console.log(message, address, password);
 		try {
 			console.log(message, encryption);
+			let pub = await pub2(message, encryption);
+			console.log(pub);
+			document.getElementById(
+				"result"
+			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${pub}">${pub}</a>`;
+			transactions.push(pub);
+			findTransactions(pub);
+			let txresult = await fetch(
+				`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub}`
+			);
+			console.log(txresult);
+			document.getElementById("myMessage").value = "";
+			document.getElementById("password").value = "";
+		} catch (e) {
+			console.log(e);
+		}
+	} else {
+		try {
 			let pub = await pub2(message, encryption);
 			console.log(pub);
 			document.getElementById(
