@@ -11,7 +11,9 @@ body {
 	justify-content: center;
 	text-align: center;
 }
-
+#myPassword {
+	margin: 0 auto;
+}
 #app {
 	margin: auto;
 	height: auto;
