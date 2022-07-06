@@ -56,13 +56,14 @@ const getMem = () => {
 				let f1 = hexConvert(asmArray[0]);
 				let f2 = hexConvert(asmArray[1]);
 				let f3 = hexConvert(asmArray[2]);
-				let f4 = asmArray[3] != undefined ? hexConvert(asmArray[3]) : "";
-				let fieldArray = [f1, f2, f3, f4];
-				let decryptedMessage = decrypt(localStorage.decryption, f4);
+				let f4 = hexConvert(asmArray[3]);
+				let f5 = asmArray[4] != undefined ? hexConvert(asmArray[4]) : "";
+				let fieldArray = [f1, f2, f3, f4, f5];
+				let decryptedMessage = decrypt(localStorage.decryption, f5);
 				fieldArray.map((e) => {
 					document.getElementById(
 						"memDecrypt"
-					).innerHTML = `<h2>EncryptedMessage: <br/>  ${decryptedMessage}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>Hash: ${f4}`;
+					).innerHTML = `<h2>EncryptedMessage: <br/>  ${decryptedMessage}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>Hash: ${f3}`;
 				});
 			}
 		}
