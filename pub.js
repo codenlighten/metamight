@@ -119,6 +119,7 @@ const pub2 = async (message, encryption) => {
 	// console.log(privKey);
 
 	const inputAddress = bsv.Address.fromPrivateKey(privKey);
+	console.log(inputAddress);
 	const tx = new bsv.Transaction();
 	tx.feePerKb(50);
 
