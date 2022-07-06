@@ -3,6 +3,12 @@ var address2;
 var transactions = [];
 var myResult;
 
+if (localStorage.decryption) {
+	document.getElementById(
+		"currentKey"
+	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+}
+
 var fileArray = [];
 const findTransactions = (transaction) => {
 	if (transactions.length > 0) {
@@ -92,7 +98,7 @@ const messageSubmit = async () => {
 		return;
 	}
 	let password = document.getElementById("password");
-	let myPassword=document.getElementById('myPassword')
+	let myPassword = document.getElementById("myPassword");
 	// let fileCheck = () => {
 
 	// }
