@@ -63,7 +63,7 @@ const getMem = () => {
 				fieldArray.map((e) => {
 					document.getElementById(
 						"memDecrypt"
-					).innerHTML = `<h2>EncryptedMessage: <br/>  ${decryptedMessage}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>Hash: ${f3}`;
+					).innerHTML = `<h2>EncryptedMessage: <br/>  ${decryptedMessage}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>Hash: ${f4}`;
 				});
 			}
 		}
