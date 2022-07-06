@@ -59,7 +59,7 @@ const getMem = () => {
 				let f4 = hexConvert(asmArray[3]);
 				let f5 = asmArray[4] != undefined ? hexConvert(asmArray[4]) : "";
 				let fieldArray = [f1, f2, f3, f4, f5];
-				let decryptedMessage = decrypt(localStorage.decryption, f5);
+				let decryptedMessage = decrypt(localStorage.decryption, f3);
 				fieldArray.map((e) => {
 					document.getElementById(
 						"memDecrypt"
