@@ -255,4 +255,5 @@ const roomKey = () => {
 	console.log(decryption);
 	localStorage.setItem("decryption", decryption);
 	document.getElementById("success").innerHTML = "Room Key Saved!";
+	document.getElementById("password").value = decryption;
 };
