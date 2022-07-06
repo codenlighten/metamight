@@ -97,7 +97,7 @@ const messageSubmit = async () => {
 	// }
 
 	if (password.value) {
-		localStorage.decryption = password.value;
+		localStorage.setItem("decryption", password.value);
 		message = encrypt(password.value, message);
 		encryption = "19ZdVjNeiqcUvSu32nJ3oTKyNmfqwZsnef";
 		// console.log(decrypted);
