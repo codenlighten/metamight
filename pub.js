@@ -138,6 +138,7 @@ const pub2 = async (message, encryption) => {
 		btoa("17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt"),
 		btoa(address),
 		btoa(message),
+		btoa(sha256(message)),
 		btoa(encryption ? encryption : ""),
 	];
 	console.log(btoaArray);
