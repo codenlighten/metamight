@@ -92,11 +92,12 @@ const messageSubmit = async () => {
 		return;
 	}
 	let password = document.getElementById("password");
+	let myPassword=document.getElementById('myPassword')
 	// let fileCheck = () => {
 
 	// }
 
-	if (password.value) {
+	if (password.value || myPassword.value) {
 		localStorage.setItem("decryption", password.value);
 		message = encrypt(password.value, message);
 		encryption = "19ZdVjNeiqcUvSu32nJ3oTKyNmfqwZsnef";
