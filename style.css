@@ -1,7 +1,7 @@
 body {
 	margin: 0 auto;
-	height: 100%;
-	width: 100vw;
+	height: 100vh;
+	width: 100%;
 	background-color: black;
 	color: whitesmoke;
 	/* background-image: url("./assets/sky.png"); */
@@ -16,9 +16,9 @@ body {
 }
 #app {
 	margin: auto;
-	height: auto;
+	height: 100%;
 	text-align: center;
-	max-width: 70vw;
+	max-width: 70%;
 	min-width: none;
 	word-wrap: break-word;
 }
