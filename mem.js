@@ -42,7 +42,7 @@ const getMem = () => {
 				fieldArray.map((e) => {
 					document.getElementById(
 						"mem"
-					).innerHTML = `<h2>Message: <br/>  ${f3}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>   ${f4}`;
+					).innerHTML = `<h2>Message: <br/>  ${f3}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/><br/>Hash: ${f3}<br/>   ${f4}`;
 				});
 			}
 			if (
@@ -62,7 +62,7 @@ const getMem = () => {
 				fieldArray.map((e) => {
 					document.getElementById(
 						"memDecrypt"
-					).innerHTML = `<h2>EncryptedMessage: <br/>  ${decryptedMessage}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>   ${f4}`;
+					).innerHTML = `<h2>EncryptedMessage: <br/>  ${decryptedMessage}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>Hash: ${f3}<br/>   ${f4}`;
 				});
 			}
 		}
