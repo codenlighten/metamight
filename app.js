@@ -250,3 +250,9 @@ const fileSplit = (arr) => {
 	return chunks;
 };
 
+const roomKey = () => {
+	let decryption = document.getElementById("myPassword").value;
+	console.log(decryption);
+	localStorage.setItem("decryption", decryption);
+	document.getElementById("success").innerHTML = "Room Key Saved!";
+};
