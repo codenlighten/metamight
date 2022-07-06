@@ -42,7 +42,7 @@ const getMem = () => {
 				fieldArray.map((e) => {
 					document.getElementById(
 						"mem"
-					).innerHTML = `<h2>Message: <br/>  ${f3}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/><br/>Hash: ${f3}<br/>   ${f4}`;
+					).innerHTML = `<h2>Message: <br/>  ${f3}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/><br/>Hash: ${f4}<br/>`;
 				});
 			}
 			if (
@@ -58,11 +58,11 @@ const getMem = () => {
 				let f3 = hexConvert(asmArray[2]);
 				let f4 = asmArray[3] != undefined ? hexConvert(asmArray[3]) : "";
 				let fieldArray = [f1, f2, f3, f4];
-				let decryptedMessage = decrypt(localStorage.decryption, f3);
+				let decryptedMessage = decrypt(localStorage.decryption, f4);
 				fieldArray.map((e) => {
 					document.getElementById(
 						"memDecrypt"
-					).innerHTML = `<h2>EncryptedMessage: <br/>  ${decryptedMessage}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>Hash: ${f3}<br/>   ${f4}`;
+					).innerHTML = `<h2>EncryptedMessage: <br/>  ${decryptedMessage}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>Hash: ${f4}`;
 				});
 			}
 		}
