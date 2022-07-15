@@ -265,3 +265,8 @@ const roomKey = () => {
 	document.getElementById("password").value = decryption;
 	location.reload();
 };
+
+if (localStorage.decryption) {
+	let password = document.getElementById("password");
+	password.value = localStorage.decryption;
+}
