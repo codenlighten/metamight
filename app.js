@@ -123,7 +123,7 @@ const messageSubmit = async () => {
 			);
 			console.log(txresult);
 			document.getElementById("myMessage").value = "";
-			document.getElementById("password").value = "";
+			// document.getElementById("password").value = "";
 		} catch (e) {
 			console.log(e);
 		}
