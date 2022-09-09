@@ -14,6 +14,30 @@ const hexConvert = (str1) => {
 	}
 	return str;
 };
+const mem = () => {
+	const centrifuge = new Centrifuge("wss://socket.whatsonchain.com/mempool");
+
+	centrifuge.on("publish", function (message) {
+		console.log("Data: " + JSON.stringify(message.data, null, 2));
+	});
+
+	centrifuge.on("disconnect", function (ctx) {
+		console.log(
+			"Disconnected: " +
+				ctx.reason +
+				(ctx.reconnect ? ", will try to reconnect" : ", won't try to reconnect")
+		);
+	});
+
+	centrifuge.on("connect", function (ctx) {
+		console.log(
+			"Connected with client ID " + ctx.client + " over " + ctx.transport
+		);
+	});
+
+	centrifuge.connect();
+};
+mem();
 const getMem = () => {
 	const centrifuge = new Centrifuge("wss://socket.whatsonchain.com/mempool");
 
@@ -21,10 +45,15 @@ const getMem = () => {
 		let data = message.data.vout[0];
 		let val = data.value;
 		let txid = message.data.txid;
+		let scriptPubKey = data.scriptPubKey;
+		let hex = scriptPubKey.hex;
+		let asm = scriptPubKey.asm;
+		console.log(message);
+
+		if (asm.includes("certihash")) {
+			console.log("found certihash tx");
+		}
 		if (val == 0) {
-			let scriptPubKey = data.scriptPubKey;
-			let hex = scriptPubKey.hex;
-			let asm = scriptPubKey.asm;
 			if (
 				hex.includes(
 					"3137457578424e466751764e394d64514b664a444447636171637239735457637a74"
@@ -85,4 +114,4 @@ const getMem = () => {
 
 	centrifuge.connect();
 };
-getMem();
+// getMem();

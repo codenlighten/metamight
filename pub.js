@@ -3,60 +3,6 @@ var dataArray = [];
 const run = new Run({ network: "main" });
 // console.log(run);
 var dataCount = 0;
-// const pub = async (theData, previousTXID, myCount) => {
-// 	const privKey = bsv.PrivateKey.fromWIF(localStorage.myKey);
-
-// 	myCount = dataCount || 0;
-
-// 	const inputAddress = bsv.Address.fromPrivateKey(privKey);
-// 	const tx = new bsv.Transaction();
-// 	tx.feePerKb(50);
-
-// 	// Build tx consumming utxos for current key
-// 	const utxos = await run.blockchain.utxos(inputAddress.toString());
-
-// 	for (const utxo of utxos) {
-// 		tx.from({
-// 			txid: utxo.txid,
-// 			vout: utxo.vout,
-// 			script: bsv.Script.fromHex(utxo.script),
-// 			satoshis: utxo.satoshis,
-// 		});
-// 	}
-// 	console.log(bsv);
-// 	// Send change to the same key.
-// 	tx.change(inputAddress);
-// 	if (dataCount == 0) {
-// 		dataArray = chunkArray(theData);
-// 		console.log(dataArray);
-// 		dataArray = counter(dataArray);
-// 	}
-
-// 	const myTxOutput = new bsv.Transaction.Output({
-// 		satoshis: 0,
-// 		script: bsv.Script.buildSafeDataOut([previousTXID, dataArray[dataCount]]),
-// 	});
-
-// tx.addOutput(myTxOutput);
-// privKey=bsv.PrivateKey.fromWIF('')
-// console.log(privKey);
-// Build and sign tx.
-// tx.sign([privKey]);
-
-// Broadcast
-
-// try {
-// 	await broadcast(tx);
-// } catch (e) {
-// logger.fatal(`Error: ${e.message}`);
-// process.exit(1);
-// 	console.log(e);
-// }
-// console.log(tx.hash);
-// dataCount++;
-// pub(dataArray[dataCount], tx.hash, dataCount);
-// return tx.hash;
-// };
 
 async function broadcast(tx) {
 	const response = await fetch(
