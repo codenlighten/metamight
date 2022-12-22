@@ -4,7 +4,10 @@ let subscribe = () => {
 	subscriptions.push(subscription);
 	localStorage.subscriptions = subscriptions;
 };
-
+function playSound(url) {
+	const audio = new Audio(url);
+	audio.play();
+}
 const mem = () => {
 	const centrifuge = new Centrifuge("wss://socket.whatsonchain.com/mempool");
 
@@ -71,6 +74,7 @@ const getMem = (phrase) => {
 					let hash = hexArr[14];
 					let paymail = hexArr[12];
 					let encryption = hexArr[16];
+					let notificationSound = "./assets/ding.mp3";
 					// let checked = document.getElementById("roomCheck").checked;
 					// console.log(checked);
 					if (encryption == "true") {
@@ -80,6 +84,7 @@ const getMem = (phrase) => {
 							console.log(e);
 						}
 						if (f2 != "") {
+							playSound();
 							document.getElementById(
 								"mem"
 							).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${paymail}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2><h2>TXID:</br>${url}</h2>`;
