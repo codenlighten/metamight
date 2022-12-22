@@ -1,9 +1,9 @@
 // var address;
 // var transactions = [];
 // var myResult;
-setTimeout(() => {
-	document.getElementById("password").value = "";
-}, 500);
+// setTimeout(() => {
+// 	document.getElementById("password").value = "";
+// }, 500);
 
 if (localStorage.decryption) {
 	document.getElementById(
@@ -13,6 +13,63 @@ if (localStorage.decryption) {
 }
 
 const messageSubmit = async () => {
+	let encryption = "false";
+	// const password = document.getElementById("password").value;
+	let message = document.getElementById("myMessage").value;
+	if (!message) {
+		alert("add message");
+		return;
+	}
+	const encryptionKey = document.getElementById("encryption");
+	// let fileCheck = () => {
+
+	// }
+
+	if (encryptionKey.value) {
+		localStorage.setItem("decryption", encryptionKey.value);
+		message = encrypt(encryptionKey.value, message);
+		encryption = "true";
+		try {
+			console.log(message, encryptionKey, encryption);
+			let pub = await onSubmit(message, encryption);
+			return;
+			console.log(pub);
+			document.getElementById(
+				"result"
+			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${pub.txid}">${pub.txid}</a>`;
+			// transactions.push(pub);
+			// findTransactions(pub);
+			let txresult = await fetch(
+				`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub.txid}`
+			);
+			console.log(txresult);
+			document.getElementById("myMessage").value = "";
+			// document.getElementById("password").value = "";
+		} catch (e) {
+			console.log(e);
+		}
+	} else {
+		try {
+			let pub = await onSubmit(message, encryption);
+			console.log(pub);
+			return;
+			document.getElementById(
+				"result"
+			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${pub.txid}">${pub.txid}</a>`;
+			// transactions.push(pub);
+			// findTransactions(pub);
+			let txresult = await fetch(
+				`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub.txid}`
+			);
+			console.log(txresult);
+			document.getElementById("myMessage").value = "";
+		} catch (e) {
+			console.log(e);
+		}
+	}
+};
+
+const messageSubmit2 = async () => {
 	let encryption = false;
 	const password = document.getElementById("password").value;
 	let message = document.getElementById("myMessage").value;
@@ -82,8 +139,3 @@ const roomKey = () => {
 	document.getElementById("password").value = decryption;
 	location.reload();
 };
-
-if (localStorage.decryption) {
-	let password = document.getElementById("password");
-	password.value = localStorage.decryption;
-}

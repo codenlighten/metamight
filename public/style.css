@@ -1,0 +1,27 @@
+body {
+	text-align: center;
+	background-color: black;
+	color: aqua;
+}
+
+#app {
+	background-color: black;
+	border-radius: 15px;
+	text-align: center;
+	font-weight: 900;
+	height: 100%;
+	max-width: 400px;
+	min-width: 300px;
+	padding: 4px;
+	margin: 0 auto;
+	word-wrap: break-word;
+}
+button {
+	margin: 5px auto;
+}
+
+#avatar {
+	margin: auto;
+	max-width: 100px;
+	border-radius: 50%;
+}

@@ -65,8 +65,8 @@ const getMem = (phrase) => {
 				let f2 = hexArr[1];
 				let f3 = hexArr[2];
 				let f4 = hexArr[3];
-				let hash = hexArr[12];
-				let sender = hexArr[14];
+				let hash = hexArr[14];
+				let paymail = hexArr[12];
 				let encryption = hexArr[16];
 				// let checked = document.getElementById("roomCheck").checked;
 				// console.log(checked);
@@ -79,7 +79,7 @@ const getMem = (phrase) => {
 					if (f2 != "") {
 						document.getElementById(
 							"mem"
-						).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${sender}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2>`;
+						).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${paymail}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2>`;
 					}
 				}
 			}
