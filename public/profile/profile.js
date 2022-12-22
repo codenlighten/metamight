@@ -14,6 +14,7 @@ const getHcProfile = async () => {
 			localStorage.paymail = res.paymail;
 			localStorage.handle = res.handle;
 			localStorage.displayName = res.displayName;
+			localStorage.avatarUrl = res.avatarUrl;
 			document.getElementById(
 				"welcome"
 			).innerHTML = `You are now logged in</br>Returning to App...`;
