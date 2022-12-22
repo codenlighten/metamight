@@ -30,7 +30,7 @@ const messageSubmit = async () => {
 		message = encrypt(encryptionKey.value, message);
 		encryption = "true";
 		try {
-			console.log(message, encryptionKey, encryption);
+			console.log(message, encryptionKey);
 			let pub = await onSubmit(message, encryption);
 			console.log(pub);
 			return;
