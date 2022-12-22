@@ -6,9 +6,7 @@ body {
 	color: whitesmoke;
 	text-align: center;
 }
-#myPassword {
-	margin: 0 auto;
-}
+
 #app {
 	margin: auto;
 	height: 100%;
@@ -18,42 +16,13 @@ body {
 	word-wrap: break-word;
 }
 
-#wallet {
-	text-align: center;
-
-	margin: auto;
-	width: auto;
-}
-
-#wallet2 {
-	text-align: center;
-
-	margin: auto;
-	width: 70%;
-}
 #message {
 	text-align: center;
 	margin: auto;
 }
 
-#clearStorage {
-	margin: auto;
-	width: 100%;
-	text-align: center;
-}
-
-#clearBtn {
-	border: 3px solid #077cc0;
-	width: auto;
-	margin: auto;
-}
-
 #mem {
-	border: solid yellow 1px;
-}
-
-#memDecrypt {
-	border: solid blueviolet 1px;
+	border: solid #ff5400 1px;
 }
 
 #subscribe {
