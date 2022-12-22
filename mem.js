@@ -75,16 +75,16 @@ const getMem = (phrase) => {
 					try {
 						f2 = decrypt(localStorage.decryption, f2);
 					} catch (e) {
-						f2 = "encrypted message";
-						if (checked == true) {
-							document.getElementById("mem").style.display = "none";
-						}
+						f2 = "encrypted";
 					}
 				}
-
-				document.getElementById(
-					"mem"
-				).innerHTML = `<h2>Message: <br/>  ${f2}<h2>Sender: <br/>  ${sender}</h2><h2>AppID: ${f1}</h2><h2>Hash: ${hash}</h2>`;
+				if (checked == true && f2 == "encrypted") {
+					document.getElementById("mem").innerHTML = "";
+				} else {
+					document.getElementById(
+						"mem"
+					).innerHTML = `<h2>Message: <br/>  ${f2}<h2>Sender: <br/>  ${sender}</h2><h2>AppID: ${f1}</h2><h2>Hash: ${hash}</h2>`;
+				}
 			}
 		}
 	});
