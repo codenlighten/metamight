@@ -1,10 +1,3 @@
-// var address;
-// var transactions = [];
-// var myResult;
-// setTimeout(() => {
-// 	document.getElementById("password").value = "";
-// }, 500);
-
 if (localStorage.decryption) {
 	document.getElementById(
 		"currentKey"
