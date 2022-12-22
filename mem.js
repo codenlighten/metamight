@@ -69,7 +69,11 @@ const getMem = (phrase) => {
 				let sender = hexArr[14];
 				let encryption = hexArr[16];
 				if (encryption == "true") {
-					f2 = decrypt(localStorage.decryption, f2);
+					try {
+						f2 = decrypt(localStorage.decryption, f2);
+					} catch (e) {
+						f2="encrypted"
+					}
 				}
 				let fieldArray = [f1, f2, f3, f4];
 				console.log(encryption);
