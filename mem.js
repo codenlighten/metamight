@@ -72,7 +72,7 @@ const getMem = (phrase) => {
 					try {
 						f2 = decrypt(localStorage.decryption, f2);
 					} catch (e) {
-						f2="encrypted"
+						f2 = "encrypted message";
 					}
 				}
 				let fieldArray = [f1, f2, f3, f4];
