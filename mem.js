@@ -81,7 +81,7 @@ const getMem = (phrase) => {
 					}
 					console.log(show);
 
-					if (show == true) {
+					if ((f2 = "")) {
 						document.getElementById(
 							"mem"
 						).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${sender}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2>`;
