@@ -70,17 +70,12 @@ const getMem = (phrase) => {
 				let encryption = hexArr[16];
 				// let checked = document.getElementById("roomCheck").checked;
 				// console.log(checked);
-				let show = true;
 				if (encryption == "true") {
 					try {
 						f2 = decrypt(localStorage.decryption, f2);
-						console.log(f2);
 					} catch (e) {
-						show = false;
-						console.log(show);
+						console.log(e);
 					}
-					console.log(show);
-
 					if ((f2 = "")) {
 						document.getElementById(
 							"mem"
