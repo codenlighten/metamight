@@ -65,6 +65,8 @@ const getMem = (phrase) => {
 				let f2 = hexArr[1];
 				let f3 = hexArr[2];
 				let f4 = hexArr[3];
+				let hash = hexArr[12];
+				let sender = hexArr[14];
 				let encryption = hexArr[16];
 				if (encryption == "true") {
 					f2 = decrypt(localStorage.decryption, f2);
@@ -74,7 +76,7 @@ const getMem = (phrase) => {
 				fieldArray.map((e) => {
 					document.getElementById(
 						"mem"
-					).innerHTML = `<h2>Message: <br/>  ${f2}</h2><br/>AppID: ${f1}<br/><br/>Hash: ${f4}<br/>`;
+					).innerHTML = `<h2>Message: <br/>  ${f2}<h2>Sender: <br/>  ${sender}</h2><h2>AppID: ${f1}</h2><h2>Hash: ${hash}</h2>`;
 				});
 			}
 		}
