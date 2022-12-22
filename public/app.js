@@ -13,9 +13,7 @@ const profile = () => {
 if (localStorage.hcauth) {
 	document.getElementById("loggedOut").style.display = "none";
 	document.getElementById("loggedIn").style.display = "";
-	document.getElementById(
-		"logo"
-	).style.background = `center / contain no-repeat url(${localStorage.avatarUrl})`;
+	document.getElementById("avatar").src = `${localStorage.avatarUrl}`;
 	document.getElementById(
 		"welcome"
 	).innerHTML = `$${localStorage.handle.toUpperCase()}`;
