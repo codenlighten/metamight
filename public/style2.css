@@ -23,7 +23,7 @@ body {
 
 #mem {
 	max-width: 350px;
-	margin: auto;
+	margin: 5px auto;
 	text-shadow: 1px 1px 2px black;
 	border: solid #ff5400 1px;
 }
