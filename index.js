@@ -62,20 +62,16 @@ app.post("/hcpost", async (req, res) => {
 		const paymentParameters = {
 			// appAction: action,
 			description: "Metameet Message",
-			payments: [
+		};
+		if (payload) {
+			paymentParameters.attachment = { format: "hexArray", value: hexArray };
+		paymentParameters.payments= [
 				{ to: "smartledger", currencyCode: "BSV", sendAmount: 0.0001 },
 				{ to: "sdot", currencyCode: "BSV", sendAmount: 0.0001 },
 				{ to: "bryan", currencyCode: "BSV", sendAmount: 0.0001 },
 				{ to: "evara", currencyCode: "BSV", sendAmount: 0.0001 },
 				{ to: "gregward", currencyCode: "BSV", sendAmount: 0.0001 },
 			],
-		};
-		// const paymentParameters = {
-		// 	appAction: action,
-		// 	description: "Metameet Message",
-		// };
-		if (payload) {
-			paymentParameters.attachment = { format: "hexArray", value: hexArray };
 		}
 		const paymentResult = await cloudAccount.wallet.pay(paymentParameters);
 		console.log(paymentResult);
