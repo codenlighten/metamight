@@ -8,26 +8,6 @@ if (localStorage.decryption) {
 	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 }
 
-// var fileArray = [];
-// const findTransactions = (transaction) => {
-// 	if (transactions.length > 0) {
-// 		transactions.push(transaction);
-// 		localStorage.transactions = transactions;
-// 	}
-// };
-
-// const listTransactions = () => {
-// 	if (transactions.length > 0) {
-// 		transactions.map((e) => {
-// 			let list = document.getElementById("txList");
-// 			let item = document.createElement("li");
-// 			item.innerHTML = `<a target="_blank" href="https://whatsonchain.com/tx/${e}"`;
-// 			list.appendChild(item);
-// 		});
-// 	}
-// };
-// listTransactions();
-
 const messageSubmit = async () => {
 	let encryption = false;
 	const password = document.getElementById("password").value;
