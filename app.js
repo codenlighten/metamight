@@ -1,6 +1,9 @@
 // var address;
 // var transactions = [];
 // var myResult;
+setTimeout(() => {
+	document.getElementById("password").value = "";
+}, 500);
 
 if (localStorage.decryption) {
 	document.getElementById(
@@ -58,7 +61,6 @@ const messageSubmit = async () => {
 			);
 			console.log(txresult);
 			document.getElementById("myMessage").value = "";
-			document.getElementById("password").value = "";
 		} catch (e) {
 			console.log(e);
 		}
