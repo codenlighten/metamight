@@ -101,7 +101,7 @@ const pub2 = async (message, password, encryption) => {
 	let inputArray = [];
 
 	let btoaArray = [
-		"19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut",
+		"1Mr1DMzM1Hix5H3DeJfiFpviq4NPbyZHPJ",
 		message,
 		"text/plain",
 		"utf-8",
