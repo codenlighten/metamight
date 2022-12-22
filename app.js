@@ -51,11 +51,11 @@ const messageSubmit = async () => {
 			console.log(pub);
 			document.getElementById(
 				"result"
-			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${pub}">${pub}</a>`;
+			).innerHTML = `TXID: <a target="_blank" href="https://whatsonchain.com/tx/${pub.txid}">${pub.txid}</a>`;
 			// transactions.push(pub);
 			// findTransactions(pub);
 			let txresult = await fetch(
-				`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub}`
+				`https://api.whatsonchain.com/v1/bsv/main/tx/hash/${pub.txid}`
 			);
 			console.log(txresult);
 			document.getElementById("myMessage").value = "";

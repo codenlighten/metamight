@@ -28,10 +28,11 @@ const mem = () => {
 
 	centrifuge.connect();
 };
-mem();
-const getMem = () => {
+// mem();
+const getMem = (phrase) => {
 	const centrifuge = new Centrifuge("wss://socket.whatsonchain.com/mempool");
-
+	const hexPhrase = toHex(phrase);
+	console.log(hexPhrase);
 	centrifuge.on("publish", async function (message) {
 		let data = message.data.vout[0];
 		let val = data.value;
@@ -40,50 +41,40 @@ const getMem = () => {
 		let hex = scriptPubKey.hex;
 		let asm = scriptPubKey.asm;
 		// console.log(message);
-
-		if (asm.includes("metameet")) {
+		let encryption = false;
+		if (asm.includes(hexPhrase)) {
 			console.log("found meet");
 		}
 		if (val == 0) {
-			if (
-				hex.includes(
-					"3137457578424e466751764e394d64514b664a444447636171637239735457637a74"
-				)
-			) {
+			if (hex.includes(hexPhrase)) {
+				const script = new bsv.Script(hex);
+				let asm = script.toASM();
+				// console.log(asm);
 				let asmArray = asm.split(" ");
-				asmArray.splice(0, 2);
-				console.log(asmArray);
 
-				let f1 = asmArray[0] != undefined ? hexConvert(asmArray[0]) : "";
-				let f2 = asmArray[1] != undefined ? hexConvert(asmArray[1]) : "";
-				let f3 = asmArray[2] != undefined ? hexConvert(asmArray[2]) : "";
-				let f4 = asmArray[3] != undefined ? hexConvert(asmArray[3]) : "";
+				asmArray.splice(0, 2);
+				console.log(hexConvert(asmArray));
+				let hexArr = [];
+				let message = "";
+				asmArray.forEach((e, i) => {
+					let convert = hexConvert(e);
+					hexArr.push(convert);
+					console.log(convert, i);
+				});
+				let f1 = hexArr[0];
+				let f2 = hexArr[1];
+				let f3 = hexArr[2];
+				let f4 = hexArr[3];
+				let encryption = hexArr[16];
+				if (encryption == "true") {
+					f2 = decrypt(localStorage.decryption, f2);
+				}
 				let fieldArray = [f1, f2, f3, f4];
+				console.log(encryption);
 				fieldArray.map((e) => {
 					document.getElementById(
 						"mem"
-					).innerHTML = `<h2>Message: <br/>  ${f3}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/><br/>Hash: ${f4}<br/>`;
-				});
-			}
-			if (
-				hex.includes(
-					"31395a64566a4e656971635576537533326e4a336f544b794e6d6671775a736e6566"
-				)
-			) {
-				console.log("encryption alert");
-				let asmArray = asm.split(" ");
-				asmArray.splice(0, 2);
-				let f1 = hexConvert(asmArray[0]);
-				let f2 = hexConvert(asmArray[1]);
-				let f3 = hexConvert(asmArray[2]);
-				let f4 = hexConvert(asmArray[3]);
-				let f5 = asmArray[4] != undefined ? hexConvert(asmArray[4]) : "";
-				let fieldArray = [f1, f2, f3, f4, f5];
-				let decryptedMessage = decrypt(localStorage.decryption, f3);
-				fieldArray.map(() => {
-					document.getElementById(
-						"memDecrypt"
-					).innerHTML = `<h2>EncryptedMessage: <br/>  ${decryptedMessage}</h2><br/>AppID: ${f1}<br/>UserID:  ${f2}<br/>Hash: ${f4}`;
+					).innerHTML = `<h2>Message: <br/>  ${f2}</h2><br/>AppID: ${f1}<br/><br/>Hash: ${f4}<br/>`;
 				});
 			}
 		}
@@ -105,4 +96,4 @@ const getMem = () => {
 
 	centrifuge.connect();
 };
-// getMem();
+getMem("metameet");
