@@ -29,8 +29,6 @@ const messageSubmit = async () => {
 		try {
 			let pub = await onSubmit(message, encryption);
 			console.log(pub);
-			document.getElementById("status").innerHTML = "";
-
 			return;
 		} catch (e) {
 			console.log(e);

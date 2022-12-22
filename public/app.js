@@ -44,6 +44,8 @@ const onSubmit = async (message, encryption) => {
 	});
 	const res = await r.json();
 	if (res) {
+		document.getElementById("status").innerHTML = "";
+
 		console.log(res);
 	}
 };
