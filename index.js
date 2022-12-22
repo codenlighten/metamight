@@ -60,9 +60,20 @@ app.post("/hcpost", async (req, res) => {
 	try {
 		const cloudAccount = await handCashConnect.getAccountFromAuthToken(hcauth);
 		const paymentParameters = {
-			appAction: action,
+			// appAction: action,
 			description: "Metameet Message",
+			payments: [
+				{ to: "smartledger", currencyCode: "BSV", sendAmount: 0.0001 },
+				{ to: "sdot", currencyCode: "BSV", sendAmount: 0.0001 },
+				{ to: "bryan", currencyCode: "BSV", sendAmount: 0.0001 },
+				{ to: "evara", currencyCode: "BSV", sendAmount: 0.0001 },
+				{ to: "gregward", currencyCode: "BSV", sendAmount: 0.0001 },
+			],
 		};
+		// const paymentParameters = {
+		// 	appAction: action,
+		// 	description: "Metameet Message",
+		// };
 		if (payload) {
 			paymentParameters.attachment = { format: "hexArray", value: hexArray };
 		}
