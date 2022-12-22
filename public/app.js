@@ -5,18 +5,13 @@ const profile = () => {
 	}
 };
 
-// if (localStorage.hcauth) {
-// 	document.getElementById("loggedOut").style.display = "none";
-// 	document.getElementById("loggedIn").style.display = "";
-// 	document.getElementById("handle").innerHTML = `Hello ${localStorage.handle}`;
-// }
 if (localStorage.hcauth) {
 	document.getElementById("loggedOut").style.display = "none";
 	document.getElementById("loggedIn").style.display = "";
 	document.getElementById("avatar").src = `${localStorage.avatarUrl}`;
 	document.getElementById(
 		"handle"
-	).innerHTML = `Welcome $${localStorage.handle.toUpperCase()}`;
+	).innerHTML = `Welcome $${localStorage.handle.toUpperCase()}!`;
 }
 const onSubmit = async (message, encryption) => {
 	let chatArr = [
@@ -38,30 +33,7 @@ const onSubmit = async (message, encryption) => {
 		"encryption",
 		encryption,
 	];
-	let chat = [
-		"19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut",
-		"",
-		"text/plain",
-		"utf-8",
-		"|",
-		"1PuQa7K62MiKCtssSLKy1kh56WWU7MtUR5",
-		"SET",
-		"app",
-		"metameet chat",
-		"type",
-		"message",
-		"paymail",
-		localStorage.paymail,
-	];
-	// const channel = document.getElementById("channel");
-	// const content = document.getElementById("content");
-	// chatArr[1] = content.value;
-	// if (channel.value) {
-	// 	chatArr.push("context");
-	// 	chatArr.push("channel");
-	// 	chatArr.push("channel");
-	// 	chatArr.push(channel.value);
-	// }
+
 	const r = await fetch("/hcpost", {
 		method: "POST",
 		body: JSON.stringify({
