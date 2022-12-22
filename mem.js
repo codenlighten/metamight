@@ -74,10 +74,13 @@ const getMem = (phrase) => {
 				if (encryption == "true") {
 					try {
 						f2 = decrypt(localStorage.decryption, f2);
+						console.log(f2);
 					} catch (e) {
-						console.log("not my message");
 						show = false;
+						console.log(show);
 					}
+					console.log(show);
+
 					if (show == true) {
 						document.getElementById(
 							"mem"
