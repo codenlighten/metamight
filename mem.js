@@ -5,20 +5,11 @@ let subscribe = () => {
 	localStorage.subscriptions = subscriptions;
 };
 
-const hexConvert = (str1) => {
-	console.log(str1);
-	var hex = str1.toString();
-	var str = "";
-	for (var n = 0; n < hex.length; n += 2) {
-		str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
-	}
-	return str;
-};
 const mem = () => {
 	const centrifuge = new Centrifuge("wss://socket.whatsonchain.com/mempool");
 
 	centrifuge.on("publish", function (message) {
-		console.log("Data: " + JSON.stringify(message.data, null, 2));
+		// console.log("Data: " + JSON.stringify(message.data, null, 2));
 	});
 
 	centrifuge.on("disconnect", function (ctx) {
@@ -48,10 +39,10 @@ const getMem = () => {
 		let scriptPubKey = data.scriptPubKey;
 		let hex = scriptPubKey.hex;
 		let asm = scriptPubKey.asm;
-		console.log(message);
+		// console.log(message);
 
-		if (asm.includes("certihash")) {
-			console.log("found certihash tx");
+		if (asm.includes("metameet")) {
+			console.log("found meet");
 		}
 		if (val == 0) {
 			if (

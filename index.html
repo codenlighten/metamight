@@ -19,7 +19,7 @@
 		></script>
 		<script src="https://cdn.jsdelivr.net/gh/centrifugal/centrifuge-js@2.X.X/dist/centrifuge.min.js"></script>
 
-		<script src="https://unpkg.com/run-sdk"></script>
+		<!-- <script src="https://unpkg.com/run-sdk"></script> -->
 
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -59,17 +59,14 @@
 					<input
 						placeholder="optional: encryption key"
 						type="password"
-						id="password"
+						id="encryption"
 					/>
 				</div>
 				<br />
+				<input placeholder="my password" type="password" id="password" /><br />
 				<button id="messageSubmit" onclick="messageSubmit()">Submit</button>
 			</div>
-			<!-- <div id="files">
-				<h2>Upload File?</h2>
-				<input id="file" type="file" /><br />
-				<button onclick="submitFile()" id="fileSubmit">Submit File</button>
-			</div> -->
+
 			<br />
 			<div id="wallet">
 				<h3 id="address"></h3>
@@ -82,19 +79,15 @@
 			</div>
 			<div id="memDecrypt"></div>
 			<div id="mem"></div>
-
-			<!-- <div id="transactions">
-				<ul id="txList"></ul>
-			</div> -->
 			<br /><br /><br />
 			<div id="clearStorage">
 				<button id="clearBtn" onclick="clearStorage()">Clear Keys</button>
 			</div>
 		</div>
-
-		<script src="./app.js"></script>
-		<script src="./pub.js"></script>
 		<script src="./crypt.js"></script>
+		<script src="./app.js"></script>
+		<script src="./balance.js"></script>
+		<script src="./pub.js"></script>
 		<script src="./mem.js"></script>
 	</body>
 </html>

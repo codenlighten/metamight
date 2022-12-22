@@ -1,191 +1,167 @@
 var previousTXID = "genesis";
 var dataArray = [];
-const run = new Run({ network: "main" });
 // console.log(run);
 var dataCount = 0;
 
 async function broadcast(tx) {
-	const response = await fetch(
-		`https://api.whatsonchain.com/v1/bsv/main/tx/raw`,
-		{
-			method: "POST",
-			mode: "no-cors",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				txhex: tx.uncheckedSerialize(),
-			}),
-		}
-	);
-	if (!response.ok) {
-		const body = await response.json();
-		console.log(Object.keys(body));
-		console.log(body.message);
-		throw new Error("Problem broadcasting transaction.");
-	}
-}
-
-const toHex = (txt) => {
-	const encoder = new TextEncoder();
-	return Array.from(encoder.encode(txt))
-		.map((b) => b.toString(16).padStart(2, "0"))
-		.join("");
-};
-
-function chunkArray(str) {
-	let size = 1000000;
-	let myArray = [];
-	const numChunks = Math.ceil(str.length / size);
-	const chunks = new Array(numChunks);
-
-	for (let i = 0, o = 0; i < numChunks; ++i, o += size) {
-		chunks[i] = str.substr(o, size);
-	}
-	myArray.push(chunks);
-	return myArray;
-}
-
-const counter = (myData) => {
-	let newArray = [];
-	myData.map((e) => {
-		let count = 0;
-		console.log(count);
-		newArray.push(e);
-		count++;
+	let b = await fetch(`https://api.whatsonchain.com/v1/bsv/main/tx/raw`, {
+		method: "POST",
+		// mode: "no-cors",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			txhex: tx.uncheckedSerialize(),
+		}),
 	});
-	dataArray = newArray;
-	console.log(newArray);
-	return newArray;
-};
+	return b;
+}
 
-const pub2 = async (message, encryption) => {
-	console.log("pubtest", message, address);
-	const privKey = bsv.PrivateKey.fromWIF(localStorage.myKey);
-	// console.log(privKey);
+// const pub2 = async (message, password, encryption) => {
+// 	console.log("pubtest", message);
+// 	let p = await decryptPrivKey(password, localStorage.privKeyEncrypted);
 
-	const inputAddress = bsv.Address.fromPrivateKey(privKey);
-	console.log(inputAddress);
+// 	const privKey = bsv.PrivateKey.fromWIF(p);
+// 	console.log(privKey);
+// 	console.log(privKey);
+// 	const address = bsv.Address.fromPrivateKey(privKey).toString();
+// 	let scriptFromAddress = bsv.Script.fromAddress(address);
+// 	let script = scriptFromAddress.toHex();
+// 	const tx = new bsv.Transaction();
+// 	tx.feePerKb(50);
+// 	console.log(address);
+// 	// Build tx consumming utxos for current key
+// 	// console.log(UTXOArray);
+// 	let uts = JSON.parse(localStorage.utxo);
+// 	console.log(uts);
+// 	// let script = "";
+// 	for (const utxo of uts) {
+// 		tx.from({
+// 			txid: utxo.txid,
+// 			vout: utxo.vout,
+// 			script: script,
+// 			satoshis: utxo.satoshis,
+// 		});
+// 	}
+// 	// Send change to the same key.
+// 	let btoaArray = [
+// 		btoa("17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt"),
+// 		btoa(address),
+// 		btoa(message),
+// 		btoa(await sha256(message)),
+// 		btoa(encryption ? encryption : ""),
+// 	];
+// 	console.log(btoaArray);
+// 	tx.change(address);
+// 	const myTxOutput = new bsv.Transaction.Output({
+// 		satoshis: 0,
+// 		script: bsv.Script.buildSafeDataOut(btoaArray, "base64"),
+// 	});
+
+// 	tx.addOutput(myTxOutput);
+
+// 	tx.sign([privKey]);
+
+// 	// Broadcast
+
+// 	let b = await broadcast(tx);
+// 	if (b.status != 200) {
+// 		console.log(b.status);
+// 		return;
+// 	} else {
+// 		console.log(b);
+// 		return tx.hash;
+// 	}
+// };
+
+const pub2 = async (message, password, encryption) => {
+	const priv = await decryptPrivKey(password, localStorage.privKeyEncrypted);
+	console.log(priv);
+	const privKey = bsv.PrivateKey.fromWIF(priv);
+	console.log(privKey);
+	const address = bsv.Address.fromPrivateKey(privKey).toString();
+	let scriptFromAddress = bsv.Script.fromAddress(address);
+	let script = scriptFromAddress.toHex();
 	const tx = new bsv.Transaction();
 	tx.feePerKb(50);
-
+	console.log(address);
 	// Build tx consumming utxos for current key
-	const utxos = await run.blockchain.utxos(inputAddress.toString());
-
-	for (const utxo of utxos) {
+	// console.log(UTXOArray);
+	let uts = JSON.parse(localStorage.utxo);
+	console.log(uts);
+	// let script = "";
+	for (const utxo of uts) {
 		tx.from({
 			txid: utxo.txid,
 			vout: utxo.vout,
-			script: bsv.Script.fromHex(utxo.script),
+			script: script,
 			satoshis: utxo.satoshis,
 		});
 	}
-	// Send change to the same key.
+	let inputArray = [];
+
 	let btoaArray = [
-		btoa("17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt"),
-		btoa(address),
-		btoa(message),
-		btoa(await sha256(message)),
-		btoa(encryption ? encryption : ""),
-	];
-	console.log(btoaArray);
-	tx.change(inputAddress);
-	const myTxOutput = new bsv.Transaction.Output({
-		satoshis: 0,
-		script: bsv.Script.buildSafeDataOut(btoaArray, "base64"),
-	});
-
-	tx.addOutput(myTxOutput);
-
-	tx.sign([privKey]);
-
-	// Broadcast
-	try {
-		await broadcast(tx);
-	} catch (e) {
-		// logger.fatal(`Error: ${e.message}`);
-		// process.exit(1);
-		console.log(e.message);
-	}
-	console.log(tx.hash);
-
-	return tx.hash;
-};
-
-const pubFile = async (message, mime, encryption) => {
-	console.log("pubtest", message, address);
-	const privKey = bsv.PrivateKey.fromWIF(localStorage.myKey);
-	// console.log(privKey);
-
-	const inputAddress = bsv.Address.fromPrivateKey(privKey);
-	const tx = new bsv.Transaction();
-	tx.feePerKb(10);
-
-	// Build tx consumming utxos for current key
-	const utxos = await run.blockchain.utxos(inputAddress.toString());
-
-	for (const utxo of utxos) {
-		tx.from({
-			txid: utxo.txid,
-			vout: utxo.vout,
-			script: bsv.Script.fromHex(utxo.script),
-			satoshis: utxo.satoshis,
-		});
-	}
-	console.log(encryption);
-	// Send change to the same key.  17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt
-	let btoaArray = [
-		btoa("19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut"),
+		"19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut",
 		message,
-		btoa(mime),
-		btoa("binary"),
-		btoa(address),
-		btoa("17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt"),
-
-		btoa(encryption ? encryption : ""),
+		"text/plain",
+		"utf-8",
+		"|",
+		"1PuQa7K62MiKCtssSLKy1kh56WWU7MtUR5",
+		"SET",
+		"app",
+		"metameet",
+		"type",
+		"chat",
+		"hash",
+		await sha256(message),
+		"sender",
+		address,
+		"encryption",
+		encryption,
 	];
-	console.log(btoaArray);
-	tx.change(inputAddress);
+
+	btoaArray.map((e) => {
+		console.log(e);
+		inputArray.push(btoa(e));
+	});
+	console.log(inputArray);
+	tx.change(address);
 	const myTxOutput = new bsv.Transaction.Output({
 		satoshis: 0,
-		script: bsv.Script.buildSafeDataOut(btoaArray, "base64"),
+		script: bsv.Script.buildSafeDataOut(inputArray, "base64"),
+
+		// script: bsv.Script.buildSafeDataOut(btoaArray, "base64"),
 	});
-
 	tx.addOutput(myTxOutput);
-
+	// const thisFee = Math.ceil(tx._estimateSize() * fee * 0.0001);
 	tx.sign([privKey]);
 
-	// Broadcast
-	try {
-		await broadcast(tx);
-	} catch (e) {
-		// logger.fatal(`Error: ${e.message}`);
-		// process.exit(1);
-		console.log(e.message);
+	let b = await broadcast(tx);
+	console.log(b);
+	if (b.status != 200) {
+		console.log("error broadcasting");
+
+		return { status: b.status };
 	}
 	console.log(tx.hash);
+	// document.getElementById("progress").innerHTML = "SUCCESSFULLY PUBLISHED!";
+	// document.getElementById("progress").style.color = "green";
+	let newUT = {
+		txid: tx.hash,
+		satoshis: tx.outputAmount,
+		script,
+		vout: 1,
+	};
+	console.log(newUT);
+	let utArr = [];
+	utArr.push(newUT);
+	localStorage.setItem("utxo", JSON.stringify(utArr));
+	return { txid: tx.hash, status: b.status };
+	// } catch (e) {
+	// logger.fatal(`Error: ${e.message}`);
+	// process.exit(1);
+	// wocUTXOS(address);
 
-	return tx.hash;
+	// await broadcast(tx);
+	// }
 };
-
-async function broadcast(tx) {
-	const response = await fetch(
-		`https://api.whatsonchain.com/v1/bsv/main/tx/raw`,
-		{
-			method: "POST",
-			mode: "no-cors",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				txhex: tx.uncheckedSerialize(),
-			}),
-		}
-	);
-	if (!response.ok) {
-		const body = await response.json();
-		console.log(Object.keys(body));
-		console.log(body.message);
-		throw new Error("Problem broadcasting transaction.");
-	}
-}
