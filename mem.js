@@ -68,12 +68,15 @@ const getMem = (phrase) => {
 				let hash = hexArr[12];
 				let sender = hexArr[14];
 				let encryption = hexArr[16];
+				let checked = document.getElementById("roomCheck").checked;
+				console.log(checked);
+
 				if (encryption == "true") {
 					try {
 						f2 = decrypt(localStorage.decryption, f2);
 					} catch (e) {
 						f2 = "encrypted message";
-						if (document.getElementById("roomCheck").checked == true) {
+						if (checked == true) {
 							document.getElementById("mem").style.display = "none";
 						}
 					}
