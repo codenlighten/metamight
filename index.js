@@ -65,13 +65,13 @@ app.post("/hcpost", async (req, res) => {
 		};
 		if (payload) {
 			paymentParameters.attachment = { format: "hexArray", value: hexArray };
-		paymentParameters.payments= [
+			paymentParameters.payments = [
 				{ to: "smartledger", currencyCode: "BSV", sendAmount: 0.0001 },
 				{ to: "sdot", currencyCode: "BSV", sendAmount: 0.0001 },
 				{ to: "bryan", currencyCode: "BSV", sendAmount: 0.0001 },
 				{ to: "evara", currencyCode: "BSV", sendAmount: 0.0001 },
 				{ to: "gregward", currencyCode: "BSV", sendAmount: 0.0001 },
-			],
+			];
 		}
 		const paymentResult = await cloudAccount.wallet.pay(paymentParameters);
 		console.log(paymentResult);

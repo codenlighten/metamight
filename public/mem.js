@@ -35,10 +35,10 @@ const getMem = (phrase) => {
 	console.log(hexPhrase);
 	centrifuge.on("publish", async function (message) {
 		let data2 = message.data.vout[0];
-		let data = message.data.vout;
+		let d = message.data.vout;
 		let txid = message.data.txid;
 
-		data.map(async (data) => {
+		d.map(async (data) => {
 			let val = data.value;
 			// let txid = message.data.txid;
 			let scriptPubKey = data.scriptPubKey;
