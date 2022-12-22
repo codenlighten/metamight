@@ -75,6 +75,13 @@ body {
 
 	width: 80%;
 }
+
+#avatar {
+	margin: auto;
+	max-width: 100px;
+	border-radius: 50%;
+}
+
 #connectButton {
 	-webkit-user-select: none; /* Safari */
 	-moz-user-select: none; /* Firefox */
