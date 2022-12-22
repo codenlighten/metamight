@@ -6,6 +6,7 @@ if (localStorage.decryption) {
 	document.getElementById(
 		"currentKey"
 	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+	document.getElementById("encryption").value = localStorage.decryption;
 }
 
 const messageSubmit = async () => {

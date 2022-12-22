@@ -70,16 +70,20 @@ const getMem = (phrase) => {
 				let encryption = hexArr[16];
 				// let checked = document.getElementById("roomCheck").checked;
 				// console.log(checked);
-
+				let show = false;
 				if (encryption == "true") {
 					try {
 						f2 = decrypt(localStorage.decryption, f2);
+						show = true;
 					} catch (e) {
 						console.log("not my message");
+						show = false;
 					}
-					document.getElementById(
-						"mem"
-					).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${sender}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2>`;
+					if (show == true) {
+						document.getElementById(
+							"mem"
+						).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${sender}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2>`;
+					}
 				}
 			}
 		}
