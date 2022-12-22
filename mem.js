@@ -68,8 +68,8 @@ const getMem = (phrase) => {
 				let hash = hexArr[12];
 				let sender = hexArr[14];
 				let encryption = hexArr[16];
-				let checked = document.getElementById("roomCheck").checked;
-				console.log(checked);
+				// let checked = document.getElementById("roomCheck").checked;
+				// console.log(checked);
 
 				if (encryption == "true") {
 					try {
