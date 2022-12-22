@@ -15,8 +15,8 @@ if (localStorage.hcauth) {
 	document.getElementById("loggedIn").style.display = "";
 	document.getElementById("avatar").src = `${localStorage.avatarUrl}`;
 	document.getElementById(
-		"welcome"
-	).innerHTML = `$${localStorage.handle.toUpperCase()}`;
+		"handle"
+	).innerHTML = `Welcome $${localStorage.handle.toUpperCase()}`;
 }
 const onSubmit = async (message, encryption) => {
 	let chatArr = [
