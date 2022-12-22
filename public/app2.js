@@ -6,6 +6,7 @@ if (localStorage.decryption) {
 }
 
 const messageSubmit = async () => {
+	document.getElementById("status").innerHTML = "...sending";
 	let encryption = "false";
 	let message = document.getElementById("myMessage").value;
 	if (!message) {
@@ -28,6 +29,8 @@ const messageSubmit = async () => {
 		try {
 			let pub = await onSubmit(message, encryption);
 			console.log(pub);
+			document.getElementById("status").innerHTML = "";
+
 			return;
 		} catch (e) {
 			console.log(e);
