@@ -32,6 +32,7 @@ const messageSubmit = async () => {
 		try {
 			console.log(message, encryptionKey, encryption);
 			let pub = await onSubmit(message, encryption);
+			console.log(pub);
 			return;
 			console.log(pub);
 			document.getElementById(
