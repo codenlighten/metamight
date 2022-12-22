@@ -5,12 +5,21 @@ const profile = () => {
 	}
 };
 
+// if (localStorage.hcauth) {
+// 	document.getElementById("loggedOut").style.display = "none";
+// 	document.getElementById("loggedIn").style.display = "";
+// 	document.getElementById("handle").innerHTML = `Hello ${localStorage.handle}`;
+// }
 if (localStorage.hcauth) {
 	document.getElementById("loggedOut").style.display = "none";
 	document.getElementById("loggedIn").style.display = "";
-	document.getElementById("handle").innerHTML = `Hello ${localStorage.handle}`;
+	document.getElementById(
+		"logo"
+	).style.background = `center / contain no-repeat url(${localStorage.avatarUrl})`;
+	document.getElementById(
+		"welcome"
+	).innerHTML = `$${localStorage.handle.toUpperCase()}`;
 }
-
 const onSubmit = async (message, encryption) => {
 	let chatArr = [
 		"19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut",
