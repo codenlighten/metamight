@@ -12,6 +12,9 @@ if (localStorage.hcauth) {
 	document.getElementById(
 		"handle"
 	).innerHTML = `Welcome $${localStorage.handle.toUpperCase()}!`;
+	if (!localStorage.decryption) {
+		localStorage.decryption = await getUUID();
+	}
 }
 const onSubmit = async (message, encryption) => {
 	let chatArr = [
