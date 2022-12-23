@@ -55,7 +55,7 @@ function initiateCall(audio, roomNum) {
 		// video: true,
 		audio: audio,
 	};
-	if (roomNum) {
+	if (roomNum != null && roomNum != undefined) {
 		roomNumber = roomNum;
 	}
 	socket.emit("create or join", roomNumber);
