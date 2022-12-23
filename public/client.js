@@ -38,13 +38,14 @@ function initiateCall(audio) {
 		// video: true,
 		audio: audio,
 	};
-	socket.emit("create or join", localStorage.decryption);
+	socket.emit("create or join", roomNumber);
 	divSelectRoom.style = "display: none;";
 	divConferenceRoom.style = "display: block;";
 }
 
 // message handlers
 socket.on("created", function (room) {
+	console.log(room);
 	navigator.mediaDevices
 		.getUserMedia(streamConstraints)
 		.then(function (stream) {
