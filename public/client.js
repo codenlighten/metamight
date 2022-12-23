@@ -52,8 +52,8 @@ btnMute.onclick = toggleAudio;
 
 function initiateCall(audio, roomNum) {
 	streamConstraints = {
-		// video: true,
 		audio: audio,
+		echoCancellation: constraint,
 	};
 	if (roomNum != null && roomNum != undefined) {
 		roomNumber = roomNum;
@@ -124,9 +124,6 @@ socket.on("offer", function (event) {
 
 socket.on("answer", function (event) {
 	rtcPeerConnection.setRemoteDescription(new RTCSessionDescription(event));
-	var constraintsObject = { echoCancellation: constraint };
-
-	constraintsObject.echoCancellation = constraint;
 });
 
 socket.on("toggleAudio", function (event) {
