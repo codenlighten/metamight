@@ -5,8 +5,8 @@ let subscribe = () => {
 	localStorage.subscriptions = subscriptions;
 };
 function playSound(ding) {
-	const audio = new Audio(ding2);
-	audio.volume = 0.2;
+	const audio = new Audio(ding3);
+	audio.volume = 0.3;
 	audio.play();
 }
 const mem = () => {
