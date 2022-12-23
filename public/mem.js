@@ -6,6 +6,7 @@ let subscribe = () => {
 };
 function playSound(ding) {
 	const audio = new Audio(ding2);
+	audio.volume = 0.2;
 	audio.play();
 }
 const mem = () => {
