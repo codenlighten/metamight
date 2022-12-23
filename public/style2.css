@@ -27,7 +27,9 @@ body {
 	text-shadow: 1px 1px 2px black;
 	border: solid #ff5400 1px;
 }
-
+#goBoth {
+	border: solid #ff5400 3px;
+}
 #subscribe {
 	border: solid blue 2px;
 	margin: auto;
