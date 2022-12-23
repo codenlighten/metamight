@@ -1,7 +1,7 @@
 const profile = () => {
 	if (!localStorage.hcauth) {
 		location.href =
-			"https://app.handcash.io/#/authorizeApp?appId=63a5ba75f2015fbd8e9da78d";
+			"https://app.handcash.io/#/authorizeApp?appId=639b712b489d787a921032d6";
 	}
 };
 
