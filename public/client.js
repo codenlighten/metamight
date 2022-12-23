@@ -33,11 +33,14 @@ btnGoBoth.onclick = () => initiateCall(true);
 btnGoVideoOnly.onclick = () => initiateCall(false);
 btnMute.onclick = toggleAudio;
 
-function initiateCall(audio) {
+function initiateCall(audio, roomNum) {
 	streamConstraints = {
 		// video: true,
 		audio: audio,
 	};
+	if (roomNum != undefined && roomNum != null) {
+		roomNumber = roomNum;
+	}
 	socket.emit("create or join", roomNumber);
 	// divSelectRoom.style = "display: none;";
 	divConferenceRoom.style = "display: block;";
