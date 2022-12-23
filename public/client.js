@@ -53,7 +53,7 @@ btnMute.onclick = toggleAudio;
 function initiateCall(audio, roomNum) {
 	streamConstraints = {
 		audio: audio,
-		echoCancellation: constraint,
+		echoCancellation: true,
 	};
 	if (roomNum != null && roomNum != undefined) {
 		roomNumber = roomNum;
