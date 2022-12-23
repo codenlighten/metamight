@@ -21,7 +21,7 @@ const messageSubmit = async () => {
 		try {
 			console.log(message, encryptionKey);
 			let pub = await onSubmit(message, encryption);
-			console.log(pub);
+			// console.log(pub);
 		} catch (e) {
 			console.log(e);
 		}
