@@ -11,6 +11,8 @@ const uniqueKey = async () => {
 		"currentKey"
 	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 	document.getElementById("encryption").value = id;
+	navigator.clipboard.writeText(id);
+	alert("Congrats!! ID copied to clipboard: " + id + "Share with your friend");
 };
 const messageSubmit = async () => {
 	document.getElementById("status").innerHTML = "...sending";
