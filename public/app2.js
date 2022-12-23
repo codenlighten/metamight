@@ -6,7 +6,10 @@ if (localStorage.decryption) {
 }
 const uniqueKey = async () => {
 	const id = await getUUID();
-	document.getElementById("myPassword").value = id;
+	localStorage.decryption = id;
+	document.getElementById(
+		"currentKey"
+	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 	document.getElementById("encryption").value = id;
 };
 const messageSubmit = async () => {
