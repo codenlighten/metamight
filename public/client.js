@@ -45,9 +45,7 @@ btnGoBoth.onclick = async () => {
 		callStatus = true;
 		btnGoBoth.innerHTML = "End Call";
 	} else {
-		btnGoBoth.innerHTML = "Start Audio";
-		callStatus = false;
-		socket.emit("end");
+		location.reload();
 	}
 	btnMute.onclick = toggleAudio;
 };
