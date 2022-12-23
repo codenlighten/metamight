@@ -1,11 +1,15 @@
 const getRoomKey = async () => {
 	const urlParams = new URLSearchParams(location.search);
 	const key = urlParams.get("key");
+	const audio = urlParams.get("audio");
 	if (key) {
 		localStorage.decryption = key;
 		document.getElementById(
 			"currentKey"
 		).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+	}
+	if (audio == "true") {
+		initiateCall(audio, key);
 	}
 };
 
