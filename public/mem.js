@@ -49,7 +49,7 @@ const getMem = (phrase) => {
 			let hex = scriptPubKey.hex;
 			let asm = scriptPubKey.asm;
 			// console.log(message);
-			if (asm.includes(hexPhrase)) {
+			if (hex.includes(hexPhrase)) {
 				console.log("found meet");
 			}
 			if (val == 0) {
@@ -81,15 +81,19 @@ const getMem = (phrase) => {
 					if (encryption == "true") {
 						try {
 							f2 = decrypt(localStorage.decryption, f2);
-						} catch (e) {
-							console.log(e);
-						}
-						if (f2 != "") {
 							playSound();
 							document.getElementById(
 								"mem"
 							).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${paymail}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2><h2>TXID:</br>${url}</h2>`;
+						} catch (e) {
+							console.log(e);
 						}
+						// if (f2 != "") {
+						// 	playSound();
+						// 	document.getElementById(
+						// 		"mem"
+						// 	).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${paymail}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2><h2>TXID:</br>${url}</h2>`;
+						// }
 						document.getElementById("mem").style.padding = "5px";
 					}
 				}
