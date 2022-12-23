@@ -29,14 +29,9 @@ var isCaller;
 // Let's do this
 var socket = io();
 var callStatus = false;
-btnGoBoth.onclick = async () => {
-	console.log(callStatus);
-	if (!localStorage.decryption) {
-		let id = await getUUID();
-		localStorage.decryption = id;
-	}
+btnGoBoth.onclick = () => {
 	if (callStatus == false) {
-		let id = localStorage.decryption;
+		id = localStorage.decryption;
 		navigator.clipboard.writeText(`https://metameet.icu/?key=${id}&audio=true`);
 		alert(
 			`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${id}&audio=true Share with your friend`
@@ -45,7 +40,9 @@ btnGoBoth.onclick = async () => {
 		callStatus = true;
 		btnGoBoth.innerHTML = "End Call";
 	} else {
-		location.reload();
+		btnGoBoth.innerHTML = "Start Audio";
+		callStatus = true;
+		socket.emit("end");
 	}
 	btnMute.onclick = toggleAudio;
 };
@@ -66,6 +63,7 @@ function initiateCall(audio, roomNum) {
 
 // message handlers
 socket.on("created", function (room) {
+	console.log(room);
 	navigator.mediaDevices
 		.getUserMedia(streamConstraints)
 		.then(function (stream) {
