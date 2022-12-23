@@ -65,8 +65,7 @@ function initiateCall(audio, roomNum) {
 }
 
 // message handlers
-socket.on("created", function (roomNumber) {
-	console.log(roomNumber);
+socket.on("created", function (room) {
 	navigator.mediaDevices
 		.getUserMedia(streamConstraints)
 		.then(function (stream) {
@@ -78,7 +77,7 @@ socket.on("created", function (roomNumber) {
 		});
 });
 
-socket.on("joined", function (roomNumber) {
+socket.on("joined", function (room) {
 	navigator.mediaDevices
 		.getUserMedia(streamConstraints)
 		.then(function (stream) {
