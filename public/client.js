@@ -42,11 +42,17 @@ function initiateCall(audio, roomNum) {
 		roomNumber = roomNum;
 	}
 	socket.emit("create or join", roomNumber);
+	navigator.clipboard.writeText(
+		`https://metameet.icu/?key=${roomNumber}&audio=true`
+	);
+	alert(
+		`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${roomNumber}&audio=true Share with your friend`
+	);
+
 	// divSelectRoom.style = "display: none;";
 	divConferenceRoom.style = "display: block;";
 }
 
-// message handlers
 socket.on("created", function (room) {
 	navigator.mediaDevices
 		.getUserMedia(streamConstraints)
