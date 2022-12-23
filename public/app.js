@@ -27,7 +27,7 @@ const onSubmit = async (message, encryption) => {
 		"type",
 		"message",
 		"paymail",
-		localStorage.paymail,
+		encryption == "true" ? await sha256(paymail) : localStorage.paymail,
 		"hash",
 		await sha256(message),
 		"encryption",
