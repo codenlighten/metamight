@@ -9,7 +9,7 @@ var btnMute = document.getElementById("mute");
 var listAudioEvents = document.getElementById("audioEvents");
 
 // variables
-var roomNumber = localStorage.decryption;
+var roomNumber = localStorage.decryption || "general";
 var localStream;
 var remoteStream;
 var rtcPeerConnection;
@@ -29,7 +29,12 @@ var isCaller;
 // Let's do this
 var socket = io();
 var callStatus = false;
-btnGoBoth.onclick = () => {
+btnGoBoth.onclick = async () => {
+	let id = "";
+	if (!localStorage.decryption) {
+		id = await getUUID();
+		localStorage.decryption = id;
+	}
 	if (callStatus == false) {
 		id = localStorage.decryption;
 		navigator.clipboard.writeText(`https://metameet.icu/?key=${id}&audio=true`);
@@ -40,9 +45,7 @@ btnGoBoth.onclick = () => {
 		callStatus = true;
 		btnGoBoth.innerHTML = "End Call";
 	} else {
-		btnGoBoth.innerHTML = "Start Audio";
-		callStatus = true;
-		socket.emit("end");
+		location.reload();
 	}
 	btnMute.onclick = toggleAudio;
 };
