@@ -47,8 +47,8 @@ btnGoBoth.onclick = async () => {
 	} else {
 		location.reload();
 	}
-	btnMute.onclick = toggleAudio;
 };
+btnMute.onclick = toggleAudio;
 
 function initiateCall(audio, roomNum) {
 	streamConstraints = {
