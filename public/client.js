@@ -32,10 +32,10 @@ var socket = io();
 btnGoBoth.onclick = () => {
 	id = localStorage.decryption;
 	navigator.clipboard.writeText(
-		`https://metamight-gfyrl.ondigitalocean.app/?key=${id}?audio=true`
+		`https://metamight-gfyrl.ondigitalocean.app/?key=${id}&audio=true`
 	);
 	alert(
-		`Congrats!! ID copied to clipboard: https://metamight-gfyrl.ondigitalocean.app/?key=${id}?audio=true Share with your friend`
+		`Congrats!! ID copied to clipboard: https://metamight-gfyrl.ondigitalocean.app/?key=${id}&audio=true Share with your friend`
 	);
 	initiateCall(true);
 };
