@@ -32,9 +32,7 @@ var callStatus = false;
 btnGoBoth.onclick = () => {
 	if (callStatus == false) {
 		id = localStorage.decryption;
-		navigator.clipboard.writeText(
-			`https://https://metameet.icu/?key=${id}&audio=true`
-		);
+		navigator.clipboard.writeText(`https://metameet.icu/?key=${id}&audio=true`);
 		alert(
 			`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${id}&audio=true Share with your friend`
 		);
