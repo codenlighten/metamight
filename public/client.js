@@ -28,18 +28,26 @@ var isCaller;
 
 // Let's do this
 var socket = io();
-
+var callStatus = false;
 btnGoBoth.onclick = () => {
-	id = localStorage.decryption;
-	navigator.clipboard.writeText(
-		`https://metamight-gfyrl.ondigitalocean.app/?key=${id}&audio=true`
-	);
-	alert(
-		`Congrats!! ID copied to clipboard: https://metamight-gfyrl.ondigitalocean.app/?key=${id}&audio=true Share with your friend`
-	);
-	initiateCall(true);
+	if (callStatus == false) {
+		id = localStorage.decryption;
+		navigator.clipboard.writeText(
+			`https://https://metameet.icu/?key=${id}&audio=true`
+		);
+		alert(
+			`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${id}&audio=true Share with your friend`
+		);
+		initiateCall(true);
+		callStatus = true;
+		btnGoBoth.innerHTML = "End Call";
+	} else {
+		btnGoBoth.innerHTML = "Start Audio";
+		callStatus = true;
+		socket.emit("end");
+	}
+	btnMute.onclick = toggleAudio;
 };
-btnMute.onclick = toggleAudio;
 
 function initiateCall(audio, roomNum) {
 	streamConstraints = {

@@ -173,6 +173,9 @@ io.on("connection", function (socket) {
 		socket.broadcast.to(event.room).emit("offer", event.sdp);
 	});
 
+	socket.on("end", function () {
+		socket.disconnect(0);
+	});
 	socket.on("answer", function (event) {
 		socket.broadcast.to(event.room).emit("answer", event.sdp);
 	});
