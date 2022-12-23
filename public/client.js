@@ -30,6 +30,7 @@ var isCaller;
 var socket = io();
 var callStatus = false;
 btnGoBoth.onclick = () => {
+	console.log(callStatus);
 	if (callStatus == false) {
 		id = localStorage.decryption;
 		navigator.clipboard.writeText(`https://metameet.icu/?key=${id}&audio=true`);
