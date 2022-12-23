@@ -121,9 +121,9 @@ socket.on("offer", function (event) {
 
 socket.on("answer", function (event) {
 	rtcPeerConnection.setRemoteDescription(new RTCSessionDescription(event));
-	var constraintsObject = { echoCancellation: constraint };
+	// var constraintsObject = { echoCancellation: constraint };
 
-	constraintsObject.echoCancellation = constraint;
+	// constraintsObject.echoCancellation = constraint;
 });
 
 socket.on("toggleAudio", function (event) {
