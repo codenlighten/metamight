@@ -30,7 +30,6 @@ var isCaller;
 var socket = io();
 
 btnGoBoth.onclick = () => initiateCall(true);
-btnGoVideoOnly.onclick = () => initiateCall(false);
 btnMute.onclick = toggleAudio;
 
 function initiateCall(audio) {
