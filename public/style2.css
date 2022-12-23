@@ -31,7 +31,9 @@ body {
 	background-color: #ff5400;
 	color: black;
 	border: solid black 3px;
+	border-radius: 5px;
 }
+
 #subscribe {
 	border: solid blue 2px;
 	margin: auto;
