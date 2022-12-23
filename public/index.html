@@ -66,7 +66,14 @@
 					<div id="mem"></div>
 					<br><br>
         <button id="goBoth">Start Audio</button>
- <button id="mute" style="display: none;">Toggle Audio</button><br>
+				<div id="conferenceRoom" style="display:none">
+        <audio id="localVideo" autoplay></audio>
+        <audio id="remoteVideo" autoplay></audio>
+        <br/>
+        <span id="mute" style="display:none">Toggle Audio</span>
+        <h2>Remote audio events</h2>
+        <div id="audioEvents"></div>
+    </div>
 				<button onclick="localStorage.clear();location.reload()">Logout</button></div>
 </div>
 			<div id="loggedOut">
