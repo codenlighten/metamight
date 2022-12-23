@@ -5,7 +5,7 @@ let subscribe = () => {
 	localStorage.subscriptions = subscriptions;
 };
 function playSound(ding) {
-	const audio = new Audio(ding3);
+	const audio = new Audio(ding);
 	audio.volume = 0.3;
 	audio.play();
 }
@@ -85,7 +85,7 @@ const getMem = (phrase) => {
 							console.log(e);
 						}
 						if (f2 != "") {
-							playSound(ding);
+							playSound(ding3);
 							document.getElementById(
 								"mem"
 							).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${paymail}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2><h2>TXID:</br>${url}</h2>`;
