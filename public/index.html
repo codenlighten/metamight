@@ -55,7 +55,19 @@
 						<h5 id="status"></h5>
 							</div>
 					<div id="mem"></div>
-					<br><br>
+					<br><br><div id="selectRoom">
+        <button id="goBoth">Video and Audio</button>
+        <button id="goVideoOnly">Video only</button>
+    </div>
+
+    <div id="conferenceRoom" style="display:none">
+        <video id="localVideo" autoplay></video>
+        <video id="remoteVideo" autoplay></video>
+        <br/>
+        <span id="mute" style="display:none">Toggle Audio</span>
+        <h2>Remote audio events</h2>
+        <div id="audioEvents"></div>
+    </div>
 				<button onclick="localStorage.clear();location.reload()">Logout</button>
 </div>
 			<div id="loggedOut">
@@ -69,8 +81,8 @@
 		<script src="./app.js"></script>
 		<script src="./app2.js"></script>
 		<script src="./mem.js"></script>
-		<!-- <script src="./app2.js"></script>
-		<script src="./balance.js"></script> -->
 		 <script src="./pub.js"></script>
+		 <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
 	</body>
 </html>
