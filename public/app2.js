@@ -1,3 +1,14 @@
+const getRoomKey = async () => {
+	const urlParams = new URLSearchParams(location.search);
+	const key = urlParams.get("key");
+	if (key) {
+		localStorage.decryption = key;
+		document.getElementById(
+			"currentKey"
+		).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+	}
+};
+
 if (localStorage.decryption) {
 	document.getElementById(
 		"currentKey"
@@ -11,9 +22,12 @@ const uniqueKey = async () => {
 		"currentKey"
 	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 	document.getElementById("encryption").value = id;
-	navigator.clipboard.writeText(id);
-	alert("Congrats!! ID copied to clipboard: " + id + "Share with your friend");
+	navigator.clipboard.writeText(`https://metameet.icu?key=${id}`);
+	alert(
+		`Congrats!! ID copied to clipboard: https://metameet.icu?key=${id} Share with your friend`
+	);
 };
+
 const messageSubmit = async () => {
 	document.getElementById("status").innerHTML = "...sending";
 	let encryption = "false";
