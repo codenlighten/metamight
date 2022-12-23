@@ -56,8 +56,8 @@ function initiateCall(audio, roomNum) {
 		roomNumber = roomNum;
 	}
 	socket.emit("create or join", roomNumber);
-	divSelectRoom.style = "display: none;";
-	divConferenceRoom.style = "display: block;";
+	// divSelectRoom.style = "display: none;";
+	// divConferenceRoom.style = "display: block;";
 	btnMute.style.display = "";
 }
 
