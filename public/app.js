@@ -4,23 +4,25 @@ const profile = () => {
 			"https://app.handcash.io/#/authorizeApp?appId=639b712b489d787a921032d6";
 	}
 };
-
-if (localStorage.hcauth) {
-	document.getElementById("loggedOut").style.display = "none";
-	document.getElementById("loggedIn").style.display = "";
-	document.getElementById("avatar").src = `${localStorage.avatarUrl}`;
-	document.getElementById(
-		"handle"
-	).innerHTML = `Welcome $${localStorage.handle.toUpperCase()}!`;
-	if (!localStorage.decryption) {
-		const id = await getUUID();
-		localStorage.decryption = id;
+const auth = async () => {
+	if (localStorage.hcauth) {
+		document.getElementById("loggedOut").style.display = "none";
+		document.getElementById("loggedIn").style.display = "";
+		document.getElementById("avatar").src = `${localStorage.avatarUrl}`;
 		document.getElementById(
-			"currentKey"
-		).innerHTML = `Current Room Key: ${localStorage.decryption}`;
-		document.getElementById("encryption").value = id;
+			"handle"
+		).innerHTML = `Welcome $${localStorage.handle.toUpperCase()}!`;
+		if (!localStorage.decryption) {
+			const id = await getUUID();
+			localStorage.decryption = id;
+			document.getElementById(
+				"currentKey"
+			).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+			document.getElementById("encryption").value = id;
+		}
 	}
-}
+};
+auth();
 const onSubmit = async (message, encryption) => {
 	let chatArr = [
 		"19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut",
