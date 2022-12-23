@@ -60,7 +60,7 @@ function initiateCall(audio, roomNum) {
 	}
 	socket.emit("create or join", roomNumber);
 	// divSelectRoom.style = "display: none;";
-	divConferenceRoom.style = "display: block;";
+	// divConferenceRoom.style = "display:hidden;";
 	btnMute.style.display = "";
 }
 
