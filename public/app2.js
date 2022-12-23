@@ -22,9 +22,11 @@ const uniqueKey = async () => {
 		"currentKey"
 	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 	document.getElementById("encryption").value = id;
-	navigator.clipboard.writeText(`https://metameet.icu?key=${id}`);
+	navigator.clipboard.writeText(
+		`https://metamight-gfyrl.ondigitalocean.app/?key=${id}`
+	);
 	alert(
-		`Congrats!! ID copied to clipboard: https://metameet.icu?key=${id} Share with your friend`
+		`Congrats!! ID copied to clipboard: https://metamight-gfyrl.ondigitalocean.app/?key=${id} Share with your friend`
 	);
 };
 
