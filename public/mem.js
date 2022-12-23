@@ -80,7 +80,7 @@ const getMem = (phrase) => {
 					// console.log(checked);
 					if (encryption == "true") {
 						try {
-							f2 = decrypt(localStorage.decryption, f2);
+							f2 = await decrypt(localStorage.decryption, f2);
 							// if (!f2.includes("=") && f2 != "") {
 							document.getElementById(
 								"mem"
