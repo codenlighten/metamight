@@ -1,5 +1,3 @@
-const { sha256 } = require("bsv/lib/crypto/hash.browser");
-
 const profile = () => {
 	if (!localStorage.hcauth) {
 		location.href =
