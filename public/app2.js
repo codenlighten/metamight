@@ -1,3 +1,5 @@
+const { sha256 } = require("bsv/lib/crypto/hash.node");
+
 const getRoomKey = async () => {
 	const urlParams = new URLSearchParams(location.search);
 	const key = urlParams.get("key");
@@ -48,10 +50,11 @@ const messageSubmit = async () => {
 	if (encryptionKey.value) {
 		localStorage.setItem("decryption", encryptionKey.value);
 		message = encrypt(encryptionKey.value, message);
+		const encryptHash = sha256(encryption.value);
 		encryption = "true";
 		try {
-			console.log(message, encryptionKey);
-			let pub = await onSubmit(message, encryption);
+			console.log(message, encryptionKey.value);
+			let pub = await onSubmit(message, encryption, encryptHash);
 			// console.log(pub);
 		} catch (e) {
 			console.log(e);

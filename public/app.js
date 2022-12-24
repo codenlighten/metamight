@@ -26,7 +26,7 @@ const auth = async () => {
 	}
 };
 auth();
-const onSubmit = async (message, encryption) => {
+const onSubmit = async (message, encryption, encryptHash) => {
 	let chatArr = [
 		"19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut",
 		message,
@@ -46,7 +46,7 @@ const onSubmit = async (message, encryption) => {
 		"encryption",
 		encryption,
 		"encryptHash",
-		sha256(localStorage.decryption),
+		encryptHash,
 	];
 
 	const r = await fetch("/hcpost", {
