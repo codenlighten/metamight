@@ -48,7 +48,6 @@ const messageSubmit = async () => {
 	if (encryptionKey.value) {
 		localStorage.setItem("decryption", encryptionKey.value);
 		message = encrypt(encryptionKey.value, message);
-		const encryptHash = sha256(encryptionKey.value);
 		encryption = "true";
 		try {
 			console.log(message, encryptionKey.value);
@@ -70,6 +69,10 @@ const messageSubmit = async () => {
 
 const roomKey = () => {
 	let decryption = document.getElementById("myPassword").value;
+	if (!decryption) {
+		alert("choose a key");
+		return;
+	}
 	console.log(decryption);
 	localStorage.setItem("decryption", decryption);
 	document.getElementById("success").innerHTML = "Room Key Saved!";
