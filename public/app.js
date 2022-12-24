@@ -20,13 +20,10 @@ const auth = async () => {
 			).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 			document.getElementById("encryption").value = id;
 		}
-		navigator.clipboard.writeText(
-			`https://metameet.icu/?key=${localStorage.decryption}`
-		);
 	}
 };
 auth();
-const onSubmit = async (message, encryption, encryptHash) => {
+const onSubmit = async (message, encryption) => {
 	let chatArr = [
 		"19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut",
 		message,
@@ -46,7 +43,7 @@ const onSubmit = async (message, encryption, encryptHash) => {
 		"encryption",
 		encryption,
 		"encryptHash",
-		encryptHash,
+		sha256(localStorage.decryption),
 	];
 
 	const r = await fetch("/hcpost", {
