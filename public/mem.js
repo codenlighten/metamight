@@ -1,3 +1,5 @@
+const { sha256 } = require("bsv/lib/crypto/hash.browser");
+
 var subscriptions = [];
 let subscribe = () => {
 	let subscription = document.getElementById("subscription").value;
@@ -76,13 +78,10 @@ const getMem = (phrase) => {
 					const paymail = hexArr[12];
 					const encryption = hexArr[16];
 					const encryptHash = hexArr[18];
-
+					const localHash = await sha256(localStorage.decryption);
 					// let checked = document.getElementById("roomCheck").checked;
 					// console.log(checked);
-					if (
-						encryption == "true" &&
-						encryptHash == sha256(localStorage.decryption)
-					) {
+					if (encryption == "true" && encryptHash == localHash) {
 						try {
 							f2 = await decrypt(localStorage.decryption, f2);
 							if (!f2.includes("=")) {
