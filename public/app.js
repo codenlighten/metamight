@@ -43,7 +43,7 @@ const onSubmit = async (message, encryption) => {
 		"encryption",
 		encryption,
 		"encryptHash",
-		sha256(hash),
+		sha256(localStorage.decryption),
 	];
 
 	const r = await fetch("/hcpost", {
