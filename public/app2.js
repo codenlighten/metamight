@@ -1,5 +1,3 @@
-const { sha256 } = require("bsv/lib/crypto/hash.node");
-
 const getRoomKey = async () => {
 	const urlParams = new URLSearchParams(location.search);
 	const key = urlParams.get("key");
