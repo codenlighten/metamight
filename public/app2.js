@@ -46,7 +46,7 @@ const messageSubmit = async () => {
 	const encryptionKey = document.getElementById("encryption");
 	if (encryptionKey.value) {
 		localStorage.setItem("decryption", encryptionKey.value);
-		message = encrypt(encryptionKey.value, message);
+		message = await encrypt(encryptionKey.value, message);
 		encryption = "true";
 	}
 	try {
