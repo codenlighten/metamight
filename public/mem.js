@@ -1,3 +1,5 @@
+const { sha256 } = require("bsv/lib/crypto/hash.browser");
+
 var subscriptions = [];
 let subscribe = () => {
 	let subscription = document.getElementById("subscription").value;
@@ -67,18 +69,22 @@ const getMem = (phrase) => {
 						hexArr.push(convert);
 						console.log(convert, i);
 					});
-					let f1 = hexArr[0];
+					const f1 = hexArr[0];
 					let f2 = hexArr[1];
-					let f3 = hexArr[2];
-					let f4 = hexArr[3];
+					const f3 = hexArr[2];
+					const f4 = hexArr[3];
 					const url = `<a target="_blank" href="https://whatsonchain.com/tx/${txid}">${txid}</a>`;
-					let hash = hexArr[14];
-					let paymail = hexArr[12];
-					let encryption = hexArr[16];
+					const hash = hexArr[14];
+					const paymail = hexArr[12];
+					const encryption = hexArr[16];
+					const encryptHash = hexArr[18];
 
 					// let checked = document.getElementById("roomCheck").checked;
 					// console.log(checked);
-					if (encryption == "true") {
+					if (
+						encryption == "true" &&
+						encryptHash == sha256(localStorage.decryption)
+					) {
 						try {
 							f2 = await decrypt(localStorage.decryption, f2);
 							if (!f2.includes("=")) {

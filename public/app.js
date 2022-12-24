@@ -1,3 +1,5 @@
+const { sha256 } = require("bsv/lib/crypto/hash.browser");
+
 const profile = () => {
 	if (!localStorage.hcauth) {
 		location.href =
@@ -37,13 +39,13 @@ const onSubmit = async (message, encryption) => {
 		"type",
 		"message",
 		"paymail",
-		encryption == "true"
-			? await sha256(localStorage.paymail)
-			: localStorage.paymail,
+		encryption == "true" ? sha256(localStorage.paymail) : localStorage.paymail,
 		"messageHash",
-		await sha256(message),
+		sha256(message),
 		"encryption",
 		encryption,
+		"encryptHash",
+		sha256(hash),
 	];
 
 	const r = await fetch("/hcpost", {
