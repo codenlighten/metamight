@@ -18,7 +18,7 @@ const auth = async () => {
 			document.getElementById(
 				"currentKey"
 			).innerHTML = `Current Room Key: ${localStorage.decryption}`;
-			document.getElementById("encryption").value = id;
+			document.getElementById("encryption").value = localStorage.decryption;
 		}
 	}
 };

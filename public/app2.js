@@ -8,6 +8,7 @@ const getRoomKey = async () => {
 			"currentKey"
 		).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 		navigator.clipboard.writeText(`https://metameet.icu/?key=${key}`);
+		document.getElementById("encryption").value = localStorage.decryption;
 	}
 	if (audio == "true") {
 		initiateCall(audio, key);
