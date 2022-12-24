@@ -97,13 +97,6 @@ const getMem = (phrase) => {
 						} catch (e) {
 							console.log(e);
 						}
-						// if (f2 != "") {
-						// 	playSound();
-						// 	document.getElementById(
-						// 		"mem"
-						// 	).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${paymail}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2><h2>TXID:</br>${url}</h2>`;
-						// }
-						// document.getElementById("mem").style.padding = "5px";
 					}
 				}
 			}
