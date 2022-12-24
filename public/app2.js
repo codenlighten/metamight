@@ -7,6 +7,7 @@ const getRoomKey = async () => {
 		document.getElementById(
 			"currentKey"
 		).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+		navigator.clipboard.writeText(`https://metameet.icu/?key=${key}`);
 	}
 	if (audio == "true") {
 		initiateCall(audio, key);
@@ -46,15 +47,23 @@ const messageSubmit = async () => {
 	const encryptionKey = document.getElementById("encryption");
 	if (encryptionKey.value) {
 		localStorage.setItem("decryption", encryptionKey.value);
-		message = await encrypt(encryptionKey.value, message);
+		message = encrypt(encryptionKey.value, message);
 		encryption = "true";
-	}
-	try {
-		console.log(message, encryptionKey);
-		let pub = await onSubmit(message, encryption);
-		console.log(pub);
-	} catch (e) {
-		console.log(e);
+		try {
+			console.log(message, encryptionKey);
+			let pub = await onSubmit(message, encryption);
+			// console.log(pub);
+		} catch (e) {
+			console.log(e);
+		}
+	} else {
+		try {
+			let pub = await onSubmit(message, encryption);
+			console.log(pub);
+			return;
+		} catch (e) {
+			console.log(e);
+		}
 	}
 };
 
