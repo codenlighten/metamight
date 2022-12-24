@@ -50,7 +50,7 @@ const messageSubmit = async () => {
 	if (encryptionKey.value) {
 		localStorage.setItem("decryption", encryptionKey.value);
 		message = encrypt(encryptionKey.value, message);
-		const encryptHash = sha256(encryption.value);
+		const encryptHash = sha256(encryptionKey.value);
 		encryption = "true";
 		try {
 			console.log(message, encryptionKey.value);
