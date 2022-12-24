@@ -1,5 +1,3 @@
-const { sha256 } = require("bsv/lib/crypto/hash.browser");
-
 var subscriptions = [];
 let subscribe = () => {
 	let subscription = document.getElementById("subscription").value;
