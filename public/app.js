@@ -37,13 +37,15 @@ const onSubmit = async (message, encryption) => {
 		"type",
 		"message",
 		"paymail",
-		encryption == "true" ? sha256(localStorage.paymail) : localStorage.paymail,
+		encryption == "true"
+			? await sha256(localStorage.paymail)
+			: localStorage.paymail,
 		"messageHash",
-		sha256(message),
+		await sha256(message),
 		"encryption",
 		encryption,
 		"encryptHash",
-		sha256(localStorage.decryption),
+		await sha256(localStorage.decryption),
 	];
 
 	const r = await fetch("/hcpost", {
