@@ -20,6 +20,9 @@ const auth = async () => {
 			).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 			document.getElementById("encryption").value = id;
 		}
+		navigator.clipboard.writeText(
+			`https://metameet.icu/?key=${localStorage.decryption}`
+		);
 	}
 };
 auth();
