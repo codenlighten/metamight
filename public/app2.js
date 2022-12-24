@@ -45,21 +45,13 @@ const messageSubmit = async () => {
 		localStorage.setItem("decryption", encryptionKey.value);
 		message = encrypt(encryptionKey.value, message);
 		encryption = "true";
-		try {
-			console.log(message, encryptionKey);
-			let pub = await onSubmit(message, encryption);
-			// console.log(pub);
-		} catch (e) {
-			console.log(e);
-		}
-	} else {
-		try {
-			let pub = await onSubmit(message, encryption);
-			console.log(pub);
-			return;
-		} catch (e) {
-			console.log(e);
-		}
+	}
+	try {
+		console.log(message, encryptionKey);
+		let pub = await onSubmit(message, encryption);
+		console.log(pub);
+	} catch (e) {
+		console.log(e);
 	}
 };
 
