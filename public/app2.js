@@ -15,15 +15,15 @@ const getRoomKey = async () => {
 	}
 };
 
-if (localStorage.decryption) {
-	document.getElementById(
-		"currentKey"
-	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
-	document.getElementById("encryption").value = localStorage.decryption;
-	navigator.clipboard.writeText(
-		`https://metameet.icu/?key=${localStorage.decryption}`
-	);
-}
+// if (localStorage.decryption) {
+// 	document.getElementById(
+// 		"currentKey"
+// 	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+// 	document.getElementById("encryption").value = localStorage.decryption;
+// 	navigator.clipboard.writeText(
+// 		`https://metameet.icu/?key=${localStorage.decryption}`
+// 	);
+// }
 const uniqueKey = async () => {
 	const id = await getUUID();
 	localStorage.setItem("decryption", id);
