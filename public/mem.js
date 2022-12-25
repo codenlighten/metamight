@@ -82,7 +82,7 @@ const getMem = (phrase) => {
 					if (encryption == "true" && encryptHash == localHash) {
 						try {
 							f2 = await decrypt(localStorage.decryption, f2);
-							f12 = await decrypt(localStorage.decryption, f12);
+							paymail = await decrypt(localStorage.decryption, paymail);
 
 							if (!f2.includes("=")) {
 								document.getElementById(
