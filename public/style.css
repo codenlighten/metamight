@@ -1,27 +1,105 @@
 body {
-	text-align: center;
+	margin: 0 auto;
+	height: 100%;
+	width: 100%;
 	background-color: black;
-	color: aqua;
+	color: whitesmoke;
+	text-align: center;
 }
 
 #app {
-	background-color: black;
-	border-radius: 15px;
-	text-align: center;
-	font-weight: 900;
+	margin: auto;
 	height: 100%;
-	max-width: 400px;
-	min-width: 300px;
-	padding: 4px;
-	margin: 0 auto;
+	text-align: center;
+	max-width: 600px;
+	min-width: none;
 	word-wrap: break-word;
 }
-button {
+
+#message {
+	text-align: center;
+	margin: auto;
+}
+
+#mem {
+	max-width: 300px;
 	margin: 5px auto;
+	text-shadow: 1px 1px 2px black;
+	border: solid #ff5400 1px;
+}
+#goBoth {
+	background-color: #ff5400;
+	border: solid black 3px;
+	border-radius: 5px;
+	margin: 3px auto;
+	font-weight: 700;
+	font-size: 1.5 rem;
+}
+
+#subscribe {
+	border: solid blue 2px;
+	margin: auto;
+	width: 50%;
+}
+#header {
+	margin: 0 auto;
+	width: 100%;
+}
+#logo {
+	margin: 0 auto;
+	max-width: 300px;
 }
 
 #avatar {
 	margin: auto;
 	max-width: 100px;
 	border-radius: 50%;
+}
+
+#connectButton {
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+	font-family: "Poppins", sans-serif;
+	box-shadow: 0px 1px 3px hsla(0, 0%, 0%, 0.15);
+	background-image: linear-gradient(#38cb7c, #1cb462);
+	border-radius: 8px;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 500;
+	padding: 16px 24px;
+	text-decoration: none;
+	transition: 0.3s;
+	width: 100%;
+	max-width: 320px;
+	vertical-align: middle;
+	letter-spacing: 0.5px;
+}
+#connectButton:before {
+	background: url("https://handcash.io/assets/ic_stat_handcash_notification.png")
+		no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+	content: "";
+	display: inline-block;
+	color: #fff;
+	height: 20px;
+	margin-right: 12px;
+	margin-bottom: 1px;
+	position: relative;
+	vertical-align: middle;
+	width: 20px;
+}
+#connectButton:hover {
+	background-image: linear-gradient(#31c475, #16b15d);
+	top: 1px;
+	box-shadow: 0px 3px 6px hsla(0, 0%, 0%, 0.15);
+}
+#connectButton:active {
+	background-image: linear-gradient(#38cb7c, #1cb462);
+	position: relative;
+	top: 1px;
+	box-shadow: 0px 0px 0px hsla(0, 0%, 0%, 0.15);
 }
