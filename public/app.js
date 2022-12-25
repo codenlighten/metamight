@@ -106,13 +106,14 @@ const uniqueKey = async () => {
 };
 
 const messageSubmit = async () => {
-	document.getElementById("status").innerHTML = "...sending";
 	let encryption = "false";
 	let message = document.getElementById("myMessage").value;
 	if (!message) {
 		alert("add message");
 		return;
 	}
+	document.getElementById("status").innerHTML = "...sending";
+
 	const encryptionKey = document.getElementById("encryption");
 	if (encryptionKey.value) {
 		localStorage.setItem("decryption", encryptionKey.value);
