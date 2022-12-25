@@ -10,9 +10,6 @@ const getRoomKey = async () => {
 		navigator.clipboard.writeText(`https://metameet.icu/?key=${key}`);
 		document.getElementById("encryption").value = key;
 	}
-	// if (audio == "true") {
-	// 	initiateCall(audio, key);
-	// }
 };
 
 if (localStorage.decryption) {
