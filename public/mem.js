@@ -41,7 +41,7 @@ const getMem = (phrase) => {
 		let data2 = message.data.vout[0];
 		let d = message.data.vout;
 		let txid = message.data.txid;
-
+		const messageList = document.getElementById("messages");
 		d.map(async (data) => {
 			let val = data.value;
 			// let txid = message.data.txid;
@@ -81,16 +81,16 @@ const getMem = (phrase) => {
 					// console.log(checked);
 					if (encryption == "true" && encryptHash == localHash) {
 						try {
+							const messageItem = document.createElement("h5");
 							f2 = await decrypt(localStorage.decryption, f2);
 							paymail = await decrypt(localStorage.decryption, paymail);
-
-							// if (!f2.includes("=")) {
+							messageItem.innerHTML = `${new Date().toString()} $${paymail}: ${f2}`;
+							messageList.prepend(messageItem);
 							document.getElementById(
 								"mem"
 							).innerHTML = `<h2>Sender:<br/>$${paymail}</h2><h2>Message:</br>${f2}</h2><h2>TXID:</br>${url}</h2>`;
 							document.getElementById("mem").style.padding = "5px";
 							playSound();
-							// }
 						} catch (e) {
 							console.log(e);
 						}
