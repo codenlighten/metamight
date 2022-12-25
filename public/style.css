@@ -22,14 +22,14 @@ body {
 }
 
 #mem {
-	width: 500px;
+	max-width: 300px;
 	margin: 5px auto;
 	text-shadow: 1px 1px 2px black;
 	border: solid #ff5400 1px;
 	word-wrap: break-word;
 }
 #messages {
-	width: 500px;
+	max-width: 300px;
 	margin: 5px auto;
 	text-shadow: 1px 1px 2px black;
 	border: solid #0000ee 1px;
