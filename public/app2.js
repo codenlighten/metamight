@@ -1,7 +1,7 @@
 const getRoomKey = async () => {
 	const urlParams = new URLSearchParams(location.search);
 	const key = urlParams.get("key");
-	const audio = urlParams.get("audio");
+	// const audio = urlParams.get("audio");
 	if (key) {
 		localStorage.setItem("decryption", key);
 		document.getElementById(
@@ -10,9 +10,9 @@ const getRoomKey = async () => {
 		navigator.clipboard.writeText(`https://metameet.icu/?key=${key}`);
 		document.getElementById("encryption").value = key;
 	}
-	if (audio == "true") {
-		initiateCall(audio, key);
-	}
+	// if (audio == "true") {
+	// 	initiateCall(audio, key);
+	// }
 };
 
 if (localStorage.decryption) {
@@ -20,19 +20,20 @@ if (localStorage.decryption) {
 		"currentKey"
 	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 	document.getElementById("encryption").value = localStorage.decryption;
-	// navigator.clipboard.writeText(
-	// 	`https://metameet.icu/?key=${localStorage.decryption}`
-	// );
+	navigator.clipboard.writeText(
+		`https://metameet.icu/?key=${localStorage.decryption}`
+	);
 }
 const uniqueKey = async () => {
 	const id = await getUUID();
 	localStorage.setItem("decryption", id);
 	document.getElementById("currentKey").innerHTML = `Current Room Key: ${id}`;
 	document.getElementById("encryption").value = id;
-	navigator.clipboard.writeText(`https://metameet.icu/?key=${id}`);
-	alert(
-		`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${id} Share with your friend`
-	);
+	clipboard.writeText(`https://metameet.icu/?key=${id}`).then(function (x) {
+		alert(
+			`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${id} Share with your friend`
+		);
+	});
 };
 
 const messageSubmit = async () => {
