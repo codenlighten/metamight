@@ -83,7 +83,9 @@ const getMem = (phrase) => {
 						try {
 							f2 = await decrypt(localStorage.decryption, f2);
 							paymail = await decrypt(localStorage.decryption, paymail);
-
+							if (paymail == localStorage.paymail) {
+								paymail = "Me";
+							}
 							// if (!f2.includes("=")) {
 							document.getElementById(
 								"mem"
