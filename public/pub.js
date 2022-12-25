@@ -17,63 +17,6 @@ async function broadcast(tx) {
 	return b;
 }
 
-// const pub2 = async (message, password, encryption) => {
-// 	console.log("pubtest", message);
-// 	let p = await decryptPrivKey(password, localStorage.privKeyEncrypted);
-
-// 	const privKey = bsv.PrivateKey.fromWIF(p);
-// 	console.log(privKey);
-// 	console.log(privKey);
-// 	const address = bsv.Address.fromPrivateKey(privKey).toString();
-// 	let scriptFromAddress = bsv.Script.fromAddress(address);
-// 	let script = scriptFromAddress.toHex();
-// 	const tx = new bsv.Transaction();
-// 	tx.feePerKb(50);
-// 	console.log(address);
-// 	// Build tx consumming utxos for current key
-// 	// console.log(UTXOArray);
-// 	let uts = JSON.parse(localStorage.utxo);
-// 	console.log(uts);
-// 	// let script = "";
-// 	for (const utxo of uts) {
-// 		tx.from({
-// 			txid: utxo.txid,
-// 			vout: utxo.vout,
-// 			script: script,
-// 			satoshis: utxo.satoshis,
-// 		});
-// 	}
-// 	// Send change to the same key.
-// 	let btoaArray = [
-// 		btoa("17EuxBNFgQvN9MdQKfJDDGcaqcr9sTWczt"),
-// 		btoa(address),
-// 		btoa(message),
-// 		btoa(await sha256(message)),
-// 		btoa(encryption ? encryption : ""),
-// 	];
-// 	console.log(btoaArray);
-// 	tx.change(address);
-// 	const myTxOutput = new bsv.Transaction.Output({
-// 		satoshis: 0,
-// 		script: bsv.Script.buildSafeDataOut(btoaArray, "base64"),
-// 	});
-
-// 	tx.addOutput(myTxOutput);
-
-// 	tx.sign([privKey]);
-
-// 	// Broadcast
-
-// 	let b = await broadcast(tx);
-// 	if (b.status != 200) {
-// 		console.log(b.status);
-// 		return;
-// 	} else {
-// 		console.log(b);
-// 		return tx.hash;
-// 	}
-// };
-
 const pub2 = async (message, password, encryption) => {
 	const priv = await decryptPrivKey(password, localStorage.privKeyEncrypted);
 	console.log(priv);
