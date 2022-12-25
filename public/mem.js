@@ -83,13 +83,11 @@ const getMem = (phrase) => {
 						try {
 							f2 = await decrypt(localStorage.decryption, f2);
 							paymail = await decrypt(localStorage.decryption, paymail);
-							if (paymail == localStorage.paymail) {
-								paymail = "Me";
-							}
+
 							// if (!f2.includes("=")) {
 							document.getElementById(
 								"mem"
-							).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>${paymail}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2><h2>TXID:</br>${url}</h2>`;
+							).innerHTML = `<h2>Message:</br>${f2}</h2><h2>Sender:<br/>$${paymail}</h2><h2>AppID: ${f1}</h2><h2>Hash:</br>${hash}</h2><h2>TXID:</br>${url}</h2>`;
 							document.getElementById("mem").style.padding = "5px";
 							playSound();
 							// }
