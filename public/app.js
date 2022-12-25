@@ -19,6 +19,9 @@ const auth = async () => {
 				"currentKey"
 			).innerHTML = `Current Room Key: ${localStorage.decryption}`;
 			document.getElementById("encryption").value = localStorage.decryption;
+			navigator.clipboard.writeText(
+				`https://metameet.icu/?key=${localStorage.decryption}`
+			);
 		}
 	}
 };
