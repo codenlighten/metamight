@@ -3,12 +3,12 @@ const getRoomKey = async () => {
 	const key = urlParams.get("key");
 	const audio = urlParams.get("audio");
 	if (key) {
-		localStorage.decryption = key;
+		localStorage.setItem("decryption", key);
 		document.getElementById(
 			"currentKey"
-		).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+		).innerHTML = `Current Room Key: ${key}`;
 		navigator.clipboard.writeText(`https://metameet.icu/?key=${key}`);
-		document.getElementById("encryption").value = localStorage.decryption;
+		document.getElementById("encryption").value = key;
 	}
 	if (audio == "true") {
 		initiateCall(audio, key);
