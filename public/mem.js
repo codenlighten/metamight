@@ -73,7 +73,7 @@ const getMem = (phrase) => {
 					const f4 = hexArr[3];
 					const url = `<a target="_blank" href="https://whatsonchain.com/tx/${txid}">${txid}</a>`;
 					const hash = hexArr[14];
-					const paymail = hexArr[12];
+					let paymail = hexArr[12];
 					const encryption = hexArr[16];
 					const encryptHash = hexArr[18];
 					const localHash = await sha256(localStorage.decryption);
