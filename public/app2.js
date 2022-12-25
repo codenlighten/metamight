@@ -26,14 +26,16 @@ if (localStorage.decryption) {
 }
 const uniqueKey = async () => {
 	const id = await getUUID();
-	localStorage.decryption = id;
+	localStorage.setItem("decryption", id);
 	document.getElementById(
 		"currentKey"
 	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
-	document.getElementById("encryption").value = id;
-	navigator.clipboard.writeText(`https://metameet.icu/?key=${id}`);
+	document.getElementById("encryption").value = localStorage.decryption;
+	navigator.clipboard.writeText(
+		`https://metameet.icu/?key=${localStorage.decryption}`
+	);
 	alert(
-		`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${id} Share with your friend`
+		`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${localStorage.decryption} Share with your friend`
 	);
 };
 
