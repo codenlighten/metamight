@@ -29,11 +29,13 @@ const uniqueKey = async () => {
 	localStorage.setItem("decryption", id);
 	document.getElementById("currentKey").innerHTML = `Current Room Key: ${id}`;
 	document.getElementById("encryption").value = id;
-	clipboard.writeText(`https://metameet.icu/?key=${id}`).then(function (x) {
-		alert(
-			`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${id} Share with your friend`
-		);
-	});
+	navigator.clipboard
+		.writeText(`https://metameet.icu/?key=${id}`)
+		.then(function (x) {
+			alert(
+				`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${id} Share with your friend`
+			);
+		});
 };
 
 const messageSubmit = async () => {
