@@ -145,12 +145,15 @@ const roomKey = () => {
 	}
 	console.log(decryption);
 	localStorage.setItem("decryption", decryption);
-	document.getElementById("success").innerHTML = "Room Key Saved!";
-	setTimeout(() => {
-		document.getElementById(
-			"currentKey"
-		).innerHTML = `Current Room Key: ${localStorage.decryption}`;
-		document.getElementById("encryption").value = localStorage.decryption;
-		document.getElementById("success").innerHTML = "";
-	}, 1000);
+	navigator.clipboard
+		.writeText(`https://metameet.icu/?key=${decryption}`)
+		.then(function (x) {
+			alert(
+				`Congrats!! ID copied to clipboard: https://metameet.icu/?key=${decryption} Share with your friend`
+			);
+		});
+	document.getElementById(
+		"currentKey"
+	).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+	document.getElementById("encryption").value = localStorage.decryption;
 };
