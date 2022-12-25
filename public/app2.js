@@ -79,5 +79,12 @@ const roomKey = () => {
 	console.log(decryption);
 	localStorage.setItem("decryption", decryption);
 	document.getElementById("success").innerHTML = "Room Key Saved!";
-	location.reload();
+	setTimeout(() => {
+		document.getElementById(
+			"currentKey"
+		).innerHTML = `Current Room Key: ${localStorage.decryption}`;
+		document.getElementById("encryption").value = localStorage.decryption;
+		document.getElementById("success").innerHTML = "";
+	}, 1000);
+	// location.reload();
 };
