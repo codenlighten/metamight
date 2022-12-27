@@ -56,9 +56,7 @@ const getMem = async (phrase) => {
 				if (hex.includes(hexPhrase)) {
 					const script = new bsv.Script(hex);
 					let asm = script.toASM();
-					// console.log(asm);
 					let asmArray = asm.split(" ");
-
 					asmArray.splice(0, 2);
 					console.log(hexConvert(asmArray));
 					let hexArr = [];
