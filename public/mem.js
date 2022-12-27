@@ -1,3 +1,5 @@
+const { sha256 } = require("bsv/lib/crypto/hash.browser");
+
 var subscriptions = [];
 let subscribe = () => {
 	let subscription = document.getElementById("subscription").value;
@@ -33,9 +35,9 @@ const mem = () => {
 	centrifuge.connect();
 };
 // mem();
-const getMem = (phrase) => {
+const getMem = async (phrase) => {
 	const centrifuge = new Centrifuge("wss://socket.whatsonchain.com/mempool");
-	const hexPhrase = toHex(phrase);
+	const hexPhrase = await toHex(phrase);
 	console.log(hexPhrase);
 	centrifuge.on("publish", async function (message) {
 		let data2 = message.data.vout[0];
@@ -118,4 +120,5 @@ const getMem = (phrase) => {
 
 	centrifuge.connect();
 };
+let shaKey = sha256(localStorage.decryption);
 getMem("metameet");
