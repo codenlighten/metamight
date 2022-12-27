@@ -32,7 +32,7 @@ app.use(
 app.use(express.static("public"));
 
 const handCashConnect = new HandCashConnect({
-	appId: "639b712b489d787a921032d6",
+	appId: process.env.HCAPPID,
 	appSecret: process.env.HCAPPSECRET,
 });
 
