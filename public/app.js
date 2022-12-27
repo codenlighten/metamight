@@ -28,7 +28,7 @@ const auth = async () => {
 auth();
 const onSubmit = async (message, encryption) => {
 	let chatArr = [
-		"19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut",
+		"1CnyAyY48a89Cv1nXbciAngoJDsk28rrbm",
 		message,
 		"text/plain",
 		"utf-8",

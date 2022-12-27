@@ -13,6 +13,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@gorillapool/js-junglebus": "^0.4.1",
 		"@handcash/handcash-connect": "^0.6.8",
 		"bsv": "1.5",
 		"dotenv": "^16.0.3",
