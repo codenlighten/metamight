@@ -39,9 +39,9 @@ const onMempool = function (tx) {
 
 (async () => {
 	await client.Subscribe(
-		"fd846dde53ca7fb9feaed6f9ac7081c926757d826ee4898c939ee6472a8bbd27",
+		"45669ee3b92ce8197d6c216e5f13d9a4d9968e7b70486ba2cc85117c805d6356",
 		// "fd846dde53ca7fb9feaed6f9ac7081c926757d826ee4898c939ee6472a8bbd27",
-		700000,
+		720000,
 		onPublish,
 		// onStatus,
 		onError,
