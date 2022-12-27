@@ -84,7 +84,7 @@ const getMem = async (phrase) => {
 							const messageItem = document.createElement("h6");
 							f2 = await decrypt(localStorage.decryption, f2);
 							paymail = await decrypt(localStorage.decryption, paymail);
-							messageItem.innerHTML = `${new Date().toString()}</br>$${paymail}: ${f2}`;
+							messageItem.innerHTML = `$${paymail}: ${f2}`;
 							messageList.prepend(messageItem);
 							document.getElementById(
 								"mem"
