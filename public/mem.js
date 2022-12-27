@@ -81,7 +81,7 @@ const getMem = async (phrase) => {
 					// console.log(checked);
 					if (encryption == "true" && encryptHash == localHash) {
 						try {
-							const messageItem = document.createElement("h6");
+							const messageItem = document.createElement("h5");
 							f2 = await decrypt(localStorage.decryption, f2);
 							paymail = await decrypt(localStorage.decryption, paymail);
 							messageItem.innerHTML = `$${paymail}: ${f2}`;
