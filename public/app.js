@@ -122,7 +122,7 @@ const messageSubmit = async () => {
 		try {
 			console.log(message, encryptionKey.value);
 			let pub = await onSubmit(message, encryption);
-			document.getElementById("myMessage").innerHTML = "";
+			document.getElementById("myMessage").value = "";
 			// console.log(pub);
 		} catch (e) {
 			console.log(e);
@@ -131,7 +131,7 @@ const messageSubmit = async () => {
 		try {
 			let pub = await onSubmit(message, encryption);
 			console.log(pub);
-			document.getElementById("myMessage").innerHTML = "";
+			document.getElementById("myMessage").value = "";
 
 			return;
 		} catch (e) {
