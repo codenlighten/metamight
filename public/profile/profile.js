@@ -17,7 +17,7 @@ const getHcProfile = async () => {
 			localStorage.avatarUrl = res.avatarUrl;
 			document.getElementById(
 				"welcome"
-			).innerHTML = `You are now logged in</br>Returning to App...`;
+			).innerHTML = `You are now logged into MetaMeet...`;
 			setTimeout(() => {
 				location.href = "../";
 			}, 2000);
