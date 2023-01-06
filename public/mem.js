@@ -1,3 +1,13 @@
+var sound = false;
+const checkSound = document.getElementById("sound");
+checkSound.addEventListener("change", () => {
+	if (checkSound.checked) {
+		sound = true;
+	} else {
+		sound = false;
+	}
+});
+
 var subscriptions = [];
 let subscribe = () => {
 	let subscription = document.getElementById("subscription").value;
@@ -89,8 +99,9 @@ const getMem = async (phrase) => {
 							).innerHTML = `<h4>Sender:<br/>$${paymail}</h4><h2>Message:</br>${f2}</h2><h2>TXID:</br>${url}</h2>`;
 							document.getElementById("mem").style.padding = "5px";
 							document.getElementById("messages").style.padding = "5px";
-
-							playSound();
+							if (sound == true) {
+								playSound();
+							}
 						} catch (e) {
 							console.log(e);
 						}

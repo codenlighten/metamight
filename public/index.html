@@ -34,7 +34,7 @@
 			<img id="logo" src="./assets/logo.png" alt="" />
 				<div style="display: none" id="loggedIn">
 					<h2 style="color: #ff5400;"  id="handle"></h2>
-					<img id="avatar"></img>
+					<img id="avatar"/>
 						<br />
 							<h5 id="currentKey"></h5>
 							<input
@@ -44,6 +44,8 @@
 							/>
 							<button onclick="roomKey()">Submit</button>
 							<br><button onclick="uniqueKey()">Generate Unique Room ID</button>
+							<br><label for="">Notification Sound On</label>
+							<input id="sound" type="checkbox">
 							<h3 id="success"></h3>
 							<br />
 							<div id="message">
