@@ -99,7 +99,7 @@ const getMem = async (phrase) => {
 							).innerHTML = `<h4>Sender:<br/>$${paymail}</h4><h2>Message:</br>${f2}</h2><h2>TXID:</br>${url}</h2>`;
 							document.getElementById("mem").style.padding = "5px";
 							document.getElementById("messages").style.padding = "5px";
-							if (sound == true) {
+							if (sound === true) {
 								playSound();
 							}
 						} catch (e) {
