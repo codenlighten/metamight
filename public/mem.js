@@ -93,7 +93,10 @@ const getMem = async (phrase) => {
 							f2 = await decrypt(localStorage.decryption, f2);
 							paymail = await decrypt(localStorage.decryption, paymail);
 							messageItem.innerHTML = `$${paymail}: ${f2}`;
+							const hr = document.createElement("hr");
+							messageList.prepend(hr);
 							messageList.prepend(messageItem);
+
 							document.getElementById(
 								"mem"
 							).innerHTML = `<h4>Sender:<br/>$${paymail}</h4><h2>Message:</br>${f2}</h2><h2>TXID:</br>${url}</h2>`;
