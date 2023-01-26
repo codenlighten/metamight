@@ -1,26 +1,11 @@
-import {
-	JungleBusClient,
-	ControlMessageStatusCode,
-} from "@gorillapool/js-junglebus";
-// const centrifuge = new Centrifuge("wss://junglebus.gorillapool.io");
-
-const client = new Centrifuge("wss://junglebus.gorillapool.io", {
+// Use WebSocket transport endpoint.
+const centrifuge = new Centrifuge("wss://junglebus.gorillapool.io", {
 	useSSL: true,
-	onConnected(ctx) {
-		console.log("CONNECTED", ctx);
-	},
-	onConnecting(ctx) {
-		console.log("CONNECTING", ctx);
-	},
-	onDisconnected(ctx) {
-		console.log("DISCONNECTED", ctx);
-	},
-	onError(ctx) {
-		console.error(ctx);
-	},
 });
-
 const onPublish = function (tx) {
+	console.log("TRANSACTION", tx);
+};
+const onMempool = function (tx) {
 	console.log("TRANSACTION", tx);
 };
 const onStatus = function (message) {
@@ -37,17 +22,23 @@ const onStatus = function (message) {
 const onError = function (err) {
 	console.error(err);
 };
-const onMempool = function (tx) {
-	console.log("TRANSACTION", tx);
-};
+// Allocate Subscription to a channel.
+const sub = centrifuge.Subscribe(
+	"45669ee3b92ce8197d6c216e5f13d9a4d9968e7b70486ba2cc85117c805d6356",
+	720000,
+	onPublish,
+	onStatus,
+	onError,
+	onMempool
+);
 
-(async () => {
-	await client.Subscribe(
-		"45669ee3b92ce8197d6c216e5f13d9a4d9968e7b70486ba2cc85117c805d6356",
-		720000,
-		onPublish,
-		onStatus,
-		onError,
-		onMempool
-	);
-})();
+// React on `news` channel real-time publications.
+sub.on("publication", function (ctx) {
+	console.log(ctx.data);
+});
+
+// Trigger subscribe process.
+sub.subscribe();
+
+// Trigger actual connection establishement.
+centrifuge.connect();
