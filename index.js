@@ -30,6 +30,7 @@ app.use(
 	})
 );
 app.use(express.static("public"));
+app.use(express.static("assets"));
 
 const handCashConnect = new HandCashConnect({
 	appId: process.env.HCAPPID,
