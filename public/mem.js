@@ -48,6 +48,7 @@ const getMem = async (phrase) => {
 	const hexPhrase = await toHex(phrase);
 	console.log(hexPhrase);
 	centrifuge.on("publish", async function (message) {
+		console.log(message);
 		let data2 = message.data.vout[0];
 		let d = message.data.vout;
 		let txid = message.data.txid;
