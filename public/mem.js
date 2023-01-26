@@ -49,7 +49,7 @@ const getMem = async (phrase) => {
 	console.log(hexPhrase);
 	centrifuge.on("publish", async function (message) {
 		console.log(message);
-		let data2 = message.data.vout[0];
+		// let data2 = message.data.vout[0];
 		let d = message.data.vout;
 		let txid = message.data.txid;
 		const messageList = document.getElementById("messages");
