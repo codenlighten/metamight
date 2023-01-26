@@ -58,7 +58,8 @@ const getMem = async (phrase) => {
 			let scriptPubKey = data.scriptPubKey;
 			let hex = scriptPubKey.hex;
 			let asm = scriptPubKey.asm;
-			// console.log(message);
+
+			console.log(asm);
 			if (hex.includes(hexPhrase)) {
 				console.log("found meet");
 			}
